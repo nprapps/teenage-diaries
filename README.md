@@ -6,7 +6,6 @@ nprapps' Project Template
 * [What's in here?](#whats-in-here)
 * [Install requirements](#install-requirements)
 * [Project secrets](#project-secrets)
-* [Bootstrap issues](#bootstrap-issues)
 * [Adding a template/view](#adding-a-templateview)
 * [Run the project locally](#run-the-project-locally)
 * [Editing workflow](#editing-workflow)
@@ -81,11 +80,6 @@ Project secrets
 
 Project secrets should **never** be stored in ``app_config.py`` or anywhere else in the repository. They will be leaked to the client if you do. Instead, always store passwords, keys, etc. in environment variables and document that they are needed here in the README.
 
-Bootstrap issues
-----------------
-
-The app-template can automatically setup your Github repo with our default labels and tickets by running ``fab bootstrap_issues``. You will be prompted for your Github username and password.
-
 Adding a template/view
 ----------------------
 
@@ -112,14 +106,12 @@ Editing workflow
 
 The app is rigged up to Google Docs for a simple key/value store that provides an editing workflow.
 
-View the sample copy spreadsheet [here](https://docs.google.com/spreadsheet/pub?key=0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc#gid=0). A few things to note:
-
 * If there is a column called ``key``, there is expected to be a column called ``value`` and rows will be accessed in templates as key/value pairs
 * Rows may also be accessed in templates by row index using iterators (see below)
 * You may have any number of worksheets
 * This document must be "published to the web" using Google Docs' interface
 
-This document is specified in ``app_config`` with the variable ``COPY_GOOGLE_DOC_KEY``. To use your own spreadsheet, change this value to reflect your document's key (found in the Google Docs URL after ``&key=``).
+This document is specified in ``app_config`` with the variable ``COPY_GOOGLE_DOC_KEY``.
 
 The app template is outfitted with a few ``fab`` utility functions that make pulling changes and updating your local data easy.
 
