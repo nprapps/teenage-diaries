@@ -4,8 +4,6 @@ nprapps' Project Template
 * [About this template](#about-this-template)
 * [Assumptions](#assumptions)
 * [What's in here?](#whats-in-here)
-* [Copy the template](#copy-the-template)
-* [Configure the project](#configure-the-project)
 * [Install requirements](#install-requirements)
 * [Project secrets](#project-secrets)
 * [Bootstrap issues](#bootstrap-issues)
@@ -17,8 +15,6 @@ nprapps' Project Template
 * [Compile static assets](#compile-static-assets)
 * [Test the rendered app](#test-the-rendered-app)
 * [Deploy to S3](#deploy-to-s3)
-* [Deploy to EC2](#deploy-to-ec2)
-* [Install cron jobs](#install-cron-jobs)
 * [Install web services](#install-web-services)
 
 About this template
@@ -61,31 +57,6 @@ The project contains the following folders and important files:
 * ``render_utils.py`` -- Code supporting template rendering.
 * ``requirements.txt`` -- Python requirements.
 
-Copy the template
------------------
-
-Create a new repository on Github. Everywhere you see ``$NEW_PROJECT_NAME`` in the following script, replace it with the name of the repository you just created.
-
-```
-git clone git@github.com:nprapps/app-template.git $NEW_PROJECT_NAME
-cd $NEW_PROJECT_NAME
-
-# Optional: checkout an initial project branch
-# git checkout [init-map|init-table|init-chat]
-
-rm -rf .git
-git init
-git add * .gitignore
-git commit -am "Initial import from app-template."
-git remote add origin git@github.com:nprapps/$NEW_PROJECT_NAME.git
-git push -u origin master
-```
-
-Configure the project
----------------------
-
-Edit ``app_config.py`` and update ``PROJECT_NAME``, ``DEPLOYED_NAME``, ``REPOSITORY_NAME`` any other relevant configuration details.
-
 Install requirements
 --------------------
 
@@ -99,9 +70,9 @@ curl https://npmjs.org/install.sh | sh
 Then install the project requirements:
 
 ```
-cd $NEW_PROJECT_NAME
+cd teenage-diaries
 npm install less universal-jst
-mkvirtualenv $NEW_PROJECT_NAME
+mkvirtualenv teenage-diaries
 pip install -r requirements.txt
 ```
 
@@ -130,7 +101,7 @@ Run the project locally
 A flask app is used to run the project locally. It will automatically recompile templates and assets on demand.
 
 ```
-workon $NEW_PROJECT_NAME
+workon teenage-diaries
 python app.py
 ```
 
@@ -197,7 +168,7 @@ Compile static assets
 Compile LESS to CSS, compile javascript templates to Javascript and minify all assets:
 
 ```
-workon $NEW_PROJECT_NAME
+workon teenage-diaries
 fab render
 ```
 
@@ -219,37 +190,6 @@ Deploy to S3
 ```
 fab staging master deploy
 ```
-
-Deploy to EC2
--------------
-You can deploy to EC2 for a variety of reasons. We cover two cases: Running a dynamic Web application and executing cron jobs.
-
-For running a Web application:
-* In ``fabfile.py`` set ``env.deploy_to_servers`` to ``True``.
-* Also in ``fabfile.py`` set ``env.deploy_web_services`` to ``True``.
-* Run ``fab staging master setup`` to configure the server.
-* Run ``fab staging master deploy`` to deploy the app.
-
-For running cron jobs:
-* In ``fabfile.py`` set ``env.deploy_to_servers`` to ``True``.
-* Also in ``fabfile.py``, set ``env.install_crontab`` to ``True``.
-* Run ``fab staging master setup`` to configure the server.
-* Run ``fab staging master deploy`` to deploy the app.
-
-You can configure your EC2 instance to both run Web services and execute cron jobs; just set both environment variables in the fabfile.
-
-Install cron jobs
------------------
-
-Cron jobs are defined in the file `crontab`. Each task should use the `cron.sh` shim to ensure the project's virtualenv is properly activated prior to execution. For example:
-
-```
-* * * * * ubuntu bash /home/ubuntu/apps/$PROJECT_NAME/repository/cron.sh fab $DEPLOYMENT_TARGET cron_test
-```
-
-**Note:** In this example you will need to replace `$PROJECT_NAME` with your actual deployed project name.
-
-To install your crontab set `env.install_crontab` to `True` at the top of `fabfile.py`. Cron jobs will be automatically installed each time you deploy to EC2.
 
 Install web services
 ---------------------

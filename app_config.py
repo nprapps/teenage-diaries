@@ -9,9 +9,9 @@ They will be exposed to users. Use environment variables instead.
 
 import os
 
-PROJECT_NAME = 'App Template'
-PROJECT_SLUG = 'app-template'
-REPOSITORY_NAME = 'app-template'
+PROJECT_NAME = 'Teenage Diaries Revisited'
+PROJECT_SLUG = 'teenage-diaries'
+REPOSITORY_NAME = 'teenage-diaries'
 
 PRODUCTION_S3_BUCKETS = ['apps.npr.org', 'apps2.npr.org']
 PRODUCTION_SERVERS = ['cron.nprapps.org']
