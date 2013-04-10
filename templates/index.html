@@ -1,45 +1,121 @@
 {% extends '_base.html' %}
 
+{% block extra_head_js %}
+    {{ JS.push('js/lib/jquery.smooth-scroll.min.js') }}
+    {{ JS.push('js/lib/jquery.jplayer.js') }}
+{% endblock %}
+
+
 {% block header_content %}
 <header>
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <h1>{{ COPY.content.header_title }}</h1>
-                <h2>{{ COPY.content.lorem_ipsum }}</h2>
-            </div>
-        </div>
+    <div class="header-wrap" data-spy="affix">
+        <h1>{{ PROJECT_NAME }}</h1>
+
+        <nav class="topnav">
+            <ul class="nav">
+                <li class="active"><a href="#intro">Introduction</a></li>
+                {% for person in COPY.people %}
+                <li><a href="#{{ person.name|lower }}">{{ person.name }}</a></li>
+                {% endfor %}
+                {% if COPY.content.cowbird_hed %}
+                <li><a href="#cowbird">{{ COPY.content.cowbird_hed }}</a></li>
+                {% endif %}
+                {% if COPY.content.project_credits %}
+                <li><a href="#credits">Project Credits</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 </header>
-{% endblock %}
-
-
-{% block content %}
-<h1>{{ PROJECT_NAME }}</h1>
-<div id="story-meta">
-    <p class="byline">by <span>{{ COPY.attribution.byline }}</span></p>
-    <p class="dateblock">
-        <span class="date">{{ COPY.attribution.pubdate }}</span>
-        <span class="time"> {{ COPY.attribution.pubtime }}</span>
-    </p>
-</div>
-
-<h2>Example COPY list</h2>
-<dl>
-    {% for row in COPY.example_list %}
-    <dt>{{ row.term }}</dt><dd>{{ row.definition }}</dd>
-    {% endfor %}
-</dl>
-
-<p id="template-example"></p>
-{% endblock %}
+{% endblock header_content %}
 
 
 {% block wide_content %}
-<div class="row">
-    <div class="span12">
-        <h2>{{ COPY.content.footer_title }}</h2>
-        <p>{{ COPY.content.lorem_ipsum }}</p>
+<div id="slides">
+    <div class="container">
+        <div class="slide" id="intro">
+            <div class="row">
+                <div class="span12">
+                    {% if COPY.content.intro_text %}
+                    <p>{{ COPY.content.intro_text }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% for person in COPY.people %}
+        <div class="slide" id="{{ person.name|lower }}">
+            <div class="row"{% if person.photo_now %} style="background-image: url('{{ person.photo_now }}');"{% endif %}>
+                <div class="span4">
+
+                    {% if person.name %}
+                    <h2>{{ person.name }}</h2>
+                    {% endif %}
+
+                    {% if person.description %}
+                    <p>{{ person.description }}</p>
+                    {% endif %}
+
+                    {% if person.audio_now_headline %}
+                    <div class="audio primary">
+                        <h3>{{ person.audio_now_headline }}</h3>
+                        {% if person.audio_now_show %}
+                        <p class="show">{{ person.audio_now_show }}</p>
+                        {% endif %}
+                        {% if person.audio_now_length %}
+                        <p class="duration">{{ person.audio_now_length }}</p>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                    {% if person.audio_then_headline %}
+                    <div class="audio secondary">
+                        <h3>{{ person.audio_then_headline }}</h3>
+                    </div>
+                    {% endif %}
+
+                    {% if person.audio_then2_headline %}
+                    <div class="audio secondary">
+                        <h3>{{ person.audio_then2_headline }}</h3>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="span4 offset3">
+                    {% if person.photo_now_credit %}
+                    <p>Photos: 
+                        {{ person.photo_then_credit }};
+                        {{ person.photo_now_credit }}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% if COPY.content.cowbird_hed %}
+        <div class="slide" id="cowbird">
+            <div class="row">
+                <div class="span12">
+                    <h2>{{ COPY.content.cowbird_hed }}</h2>
+                    <p>{{ COPY.content.cowbird_description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if COPY.content.project_credits %}
+        <div class="slide" id="credits">
+            <div class="row">
+                <div class="span12">
+                    <h2>{{ COPY.content.project_credits_hed }}</h2>
+                    <p>{{ COPY.content.project_credits }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
+{% endblock %}
+
+
+{% block extra_foot_js %}
+    {{ JS.push('js/lib/popcorn-complete.js') }}
 {% endblock %}
