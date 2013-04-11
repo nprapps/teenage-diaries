@@ -9,7 +9,16 @@
 {% block header_content %}
 <header>
     <div class="header-wrap" data-spy="affix">
-        <h1>{{ PROJECT_NAME }}</h1>
+        <div class="main-hed">
+            <h1>{{ PROJECT_NAME }}</h1>
+            <div class="partners">
+                <ul>
+                    <li class="txt">In partnership:</li>
+                    <li class="npr"><a href="http://www.npr.org">NPR</a></li>
+                    <li class="radio-diaries"><a href="http://www.radiodiaries.org">Radio Diaries</a></li>
+                </ul>
+            </div>
+        </div>
 
         <nav class="topnav">
             <ul class="nav">
@@ -19,6 +28,9 @@
                 {% endfor %}
                 {% if COPY.content.cowbird_hed %}
                 <li><a href="#cowbird">{{ COPY.content.cowbird_hed }}</a></li>
+                {% endif %}
+                {% if COPY.content.notebook_hed %}
+                <li><a href="#notebook">{{ COPY.content.notebook_hed }}</a></li>
                 {% endif %}
                 {% if COPY.content.project_credits %}
                 <li><a href="#credits">Project Credits</a></li>
@@ -97,6 +109,16 @@
                 <div class="span12">
                     <h2>{{ COPY.content.cowbird_hed }}</h2>
                     <p>{{ COPY.content.cowbird_description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if COPY.content.notebook_hed %}
+        <div class="slide" id="notebook">
+            <div class="row">
+                <div class="span12">
+                    <h2>{{ COPY.content.notebook_hed }}</h2>
+                    <p>{{ COPY.content.notebook_description }}</p>
                 </div>
             </div>
         </div>
