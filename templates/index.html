@@ -27,7 +27,7 @@
                 <li><a href="#{{ person.name|lower }}">{{ person.name }}</a></li>
                 {% endfor %}
                 {% if COPY.content.cowbird_hed %}
-                <li><a href="#cowbird">{{ COPY.content.cowbird_hed }}</a></li>
+                <li><a href="#cowbird-grid">{{ COPY.content.cowbird_hed }}</a></li>
                 {% endif %}
                 {% if COPY.content.notebook_hed %}
                 <li><a href="#notebook">{{ COPY.content.notebook_hed }}</a></li>
@@ -104,11 +104,12 @@
         </div>
         {% endfor %}
         {% if COPY.content.cowbird_hed %}
-        <div class="slide" id="cowbird">
+        <div class="slide" id="cowbird-grid">
             <div class="row">
                 <div class="span12">
                     <h2>{{ COPY.content.cowbird_hed }}</h2>
                     <p>{{ COPY.content.cowbird_description }}</p>
+                    <div id='cowbird' data-key='5165bfa810ee6' data-constraints='collectionid=653' data-sort='custom' data-style='salon' data-summary='true' data-widget='stories'></div>
                 </div>
             </div>
         </div>
@@ -139,5 +140,5 @@
 
 
 {% block extra_foot_js %}
-    {{ JS.push('js/lib/popcorn-complete.js') }}
+    <script type='text/javascript' src='http://cdn1.cowbird.com/assets/js/embed/cb-embedded.js'></script>
 {% endblock %}
