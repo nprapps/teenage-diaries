@@ -59,17 +59,28 @@
             <div class="row"{% if person.photo_now %} style="background-image: url('{{ person.photo_now }}');"{% endif %}>
                 <div class="span4">
 
-                    {% if person.name %}
-                    <h2>{{ person.name }}</h2>
+                    {% if person.full_name %}
+                    <h2>{{ person.full_name }}</h2>
                     {% endif %}
 
-                    {% if person.description %}
-                    <p>{{ person.description }}</p>
-                    {% endif %}
+                    <ul>
+                        {% if person.hometown %}
+                        <li><strong>Hometown:</strong> {{ person.hometown }}</li>
+                        {% endif %}
+                        {% if person.current_city %}
+                        <li><strong>Current City:</strong> {{ person.current_city }}</li>
+                        {% endif %}
+                        {% if person.occupation %}
+                        <li><strong>Occupation:</strong> {{ person.occupation }}</li>
+                        {% endif %}
+                    </ul>
 
                     {% if person.audio_now_headline %}
                     <div class="audio primary">
                         <h3>{{ person.audio_now_headline }}</h3>
+                        {% if person.audio_now_description %}
+                        <p>{{ person.audio_now_description }}</p>
+                        {% endif %}
                         {% if person.audio_now_show %}
                         <p class="show">{{ person.audio_now_show }}</p>
                         {% endif %}
@@ -82,6 +93,9 @@
                     {% if person.audio_then_headline %}
                     <div class="audio secondary">
                         <h3>{{ person.audio_then_headline }}</h3>
+                        {% if person.audio_then_description %}
+                        <p>{{ person.audio_then_description }}</p>
+                        {% endif %}
                     </div>
                     {% endif %}
 
