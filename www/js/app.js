@@ -6,6 +6,7 @@ $(document).ready(function() {
     var $slide = $('#slides').find('.slide');
     var $slide_row = $slide.find('.row');
     var $w = $(window);
+    var $players = $('.jp-jplayer');
     
     var anchors = ['intro', 'amanda', 'juan', 'frankie', 'josh', 'melissa', 'cowbird-grid', 'notebook', 'credits'];
     var current_anchor = 0;
@@ -15,7 +16,6 @@ $(document).ready(function() {
     var window_height = window.innerHeight;
     var window_width = window.innerWidth;
     
-
     /* 
      * When the screen resizes (and on init)
      */
@@ -40,7 +40,6 @@ $(document).ready(function() {
         }
 	}
 
-
     /* 
      * Section jump links
      */
@@ -53,6 +52,7 @@ $(document).ready(function() {
         });
         current_anchor = find_anchor_position(target);
     }
+
     function find_anchor_position(anchor) {
         anchor = anchor.substr(1);
         for (var i = 0; i < total_anchors; i++) {
@@ -61,10 +61,12 @@ $(document).ready(function() {
             }
         }
     }
+
     $section_links.on('click', function() {
         scroll_to_position($(this).attr('href'));
         return false;
     });
+
     $(document).keydown(function(ev) {
         if (ev.which == 74) {
             // go to previous slide
@@ -90,10 +92,32 @@ $(document).ready(function() {
         return true;
     });
 	
+    /*
+     * Audio
+     */
+    function init_audio() {
+        $players.each(function() {
+            $(this).jPlayer({
+                ready: function() {
+                    $(this).jPlayer('setMedia', {
+                        mp3: $(this).data('url')
+                    }).jPlayer('pause');
+                },
+                play: function() {
+                    $(this).jPlayer('pauseOthers');
+                },
+                swfPath: 'js',
+                supplied: 'mp3',
+                cssSelectorAncestor: $(this).data('selector')
+            });
+        });
+    }
 
 	/*
 	 * Init functions
 	 */
 	resize_slideshow();
 	$w.resize(resize_slideshow);
+
+    init_audio();
 });

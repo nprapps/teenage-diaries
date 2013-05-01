@@ -80,14 +80,14 @@
                     {% endif %}
                     {% if person.audio_then_headline %}
                     <div class="audio secondary">
-                        <div id="audio-{{ person.name|lower }}-secondary" class="jp-jplayer"></div>
+                        <div id="audio-{{ person.name|lower }}-secondary" class="jp-jplayer" data-url="{{ person.audio_then_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary"></div>
                         <div id="jp_container_{{ person.name|lower }}_secondary" class="jp-audio">
                             <div class="jp-type-single">
     
                                 <div class="jp-gui jp-interface">
                                     <div class="jp-controls">
                                         <a href="javascript:;" class="jp-play" tabindex="1">play</a>
-                                        <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">pause<</a>
+                                        <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">pause</a>
                                     </div>
             
                                     <div class="jp-meta">
@@ -108,7 +108,7 @@
 
                     {% if person.audio_then2_headline %}
                     <div class="audio secondary">
-                        <div id="audio-{{ person.name|lower }}-secondary2" class="jp-jplayer"></div>
+                        <div id="audio-{{ person.name|lower }}-secondary2" class="jp-jplayer" data-url="{{ person.audio_then2_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary2"></div>
                         <div id="jp_container_{{ person.name|lower }}_secondary2" class="jp-audio">
                             <div class="jp-type-single">
     
@@ -139,7 +139,7 @@
                     {% endif %}
                     {% if person.audio_now_headline %}
                     <div class="audio primary">
-                        <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer"></div>
+                        <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer" data-url="{{ person.audio_now_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_primary"></div>
                         <div id="jp_container_{{ person.name|lower }}_primary" class="jp-audio">
                             <div class="jp-type-single">
     
