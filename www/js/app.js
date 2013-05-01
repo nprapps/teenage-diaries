@@ -106,6 +106,7 @@ $(document).ready(function() {
                 play: function() {
                     $(this).jPlayer('pauseOthers');
                 },
+                preload: "none",
                 swfPath: 'js',
                 solution: 'flash, html',
                 supplied: 'mp3',
