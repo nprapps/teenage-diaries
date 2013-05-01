@@ -97,8 +97,12 @@
                                                     <div class="jp-play-bar"></div>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="audio-info">
                                             <h3>{{ person.audio_then_headline }}</h3>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -125,8 +129,12 @@
                                                     <div class="jp-play-bar"></div>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="audio-info">
                                             <h3>{{ person.audio_then2_headline }}</h3>
                                         </div>
+ 
                                     </div>
                                 </div>
                             </div>
@@ -154,18 +162,20 @@
                                             <div class="jp-progress">
                                                 <div class="jp-seek-bar">
                                                     <div class="jp-play-bar"></div>
-
-                                                    <h3>{{ person.audio_now_headline }}</h3>
-                                                    {% if person.audio_now_show %}
-                                                    <p class="show">{{ person.audio_now_show }}</p>
-                                                    {% endif %}
-                                                    {% if person.audio_now_length %}
-                                                    <p class="duration">{{ person.audio_now_length }}</p>
-                                                    {% endif %}
-
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <div class="audio-info">
+                                            <h3>{{ person.audio_now_headline }}</h3>
+                                            {% if person.audio_now_show %}
+                                            <p class="show">{{ person.audio_now_show }}</p>
+                                            {% endif %}
+                                            {% if person.audio_now_length %}
+                                            <p class="duration">{{ person.audio_now_length }}</p>
+                                            {% endif %}
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

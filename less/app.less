@@ -211,17 +211,15 @@ header {
             position: relative;
             
             h3 {
-                color: #7a96cc;
-                font-size: 16px;
-                font-weight: bold;
-                margin: 0 0 5px 11px;
+                font-size: 15px;
+                margin: 3px 0 5px 0;
             }
             .show, .duration {
                 font-size: 12px;
                 color: #999;
                 font-weight: bold;
             }
-            .show { float: left; margin-left: 11px; }
+            .show { float: left; }
             .duration { float: right; }
         }
         .jp-play {
@@ -238,7 +236,8 @@ header {
             text-indent: -9999px;
             background: url('../img/btn-playpause-66.gif') no-repeat 0 -66px;
         }
-        .jp-progress {
+        .jp-progress, 
+        .jp-play-bar {
             height: 66px;
         }
     }
@@ -252,43 +251,48 @@ header {
             h3 { 
                 font-size: 13px;
                 margin: 0;
-                font-weight: bold;
-                color: #7a96cc;
                 line-height: 33px;
-                padding-left: 11px;
-                position: absolute;
-                top: 0; left: 0;
             }
         }
-        .jp-play {
+        .jp-play, .jp-pause {
             display: block;
             width: 33px;
             height: 33px;
             text-indent: -9999px;
-            background: url('../img/btn-playpause-33.gif') no-repeat 0 0;
         }
-        .jp-pause {
-            display: block;
-            width: 33px;
-            height: 33px;
-            text-indent: -9999px;
-            background: url('../img/btn-playpause-33.gif') no-repeat 0 -33px;
-        }
-        .jp-progress {
-            height: 33px;
-        }
+        .jp-play { background: url('../img/btn-playpause-33.gif') no-repeat 0 0; }
+        .jp-pause { background: url('../img/btn-playpause-33.gif') no-repeat 0 -33px; }
+        .jp-progress, .jp-play-bar { height: 33px; }
     }
     .jp-interface {
         display: table;
         width: 100%;
     }
-    .jp-controls {
-        display: table-cell;
-    }
+    .jp-controls { display: table-cell; }
     .jp-meta {
         display: table-cell;
         vertical-align: middle;
+        
+        h3 {
+            font-weight: bold;
+            color: #7a96cc;
+        }
     }
+    .jp-progress { 
+        background: #333;
+        background: rgba(51,51,51,.65);
+    }
+    .jp-play-bar { 
+        background-color: #444;
+    }
+    .audio-info {
+        padding: 0 11px;
+        position: absolute;
+        top: 0; left: 0;
+
+        &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+    }
+
     &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 }
 
