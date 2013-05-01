@@ -27,7 +27,6 @@ $(document).ready(function() {
         });
         total_anchors = anchors.length;
     }
-    get_anchor_list();
 
     
     /* 
@@ -71,6 +70,9 @@ $(document).ready(function() {
         current_anchor = find_anchor_position(target);
     }
 
+    /*
+     * Needed for j/k links - identify where in sequence you are
+     */
     function find_anchor_position(anchor) {
         anchor = anchor.substr(1);
         for (var i = 0; i < total_anchors; i++) {
@@ -79,12 +81,27 @@ $(document).ready(function() {
             }
         }
     }
+    
+    /*
+     * if there's a location hash onload, set current_anchor appropriately
+     */
+    function check_initial_hash() {
+        if (window.location.hash) {
+            var anchor_position = find_anchor_position(window.location.hash);
+            if (anchor_position != undefined) {
+                current_anchor = anchor_position;
+            }
+        }
+    }
 
     $section_links.on('click', function() {
         scroll_to_position($(this).attr('href'));
         return false;
     });
-
+    
+    /*
+     * j/k key navigation
+     */
     $(document).keydown(function(ev) {
         if (ev.which == 74) {
             // go to previous slide
@@ -110,6 +127,7 @@ $(document).ready(function() {
         return true;
     });
 	
+
     /*
      * Audio
      */
@@ -133,11 +151,13 @@ $(document).ready(function() {
         });
     }
 
+
 	/*
 	 * Init functions
 	 */
+    get_anchor_list();
 	resize_slideshow();
 	$w.resize(resize_slideshow);
-
+	check_initial_hash();
     init_audio();
 });
