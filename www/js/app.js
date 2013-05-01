@@ -8,13 +8,27 @@ $(document).ready(function() {
     var $w = $(window);
     var $players = $('.jp-jplayer');
     
-    var anchors = ['intro', 'amanda', 'juan', 'frankie', 'josh', 'melissa', 'cowbird-grid', 'notebook', 'credits'];
+    var anchors = [];
     var current_anchor = 0;
-    var total_anchors = anchors.length;
+    var total_anchors;
 
     var header_height = $header_container.height();
     var window_height = window.innerHeight;
     var window_width = window.innerWidth;
+    
+
+    /*
+     * Populate list of anchors
+     */
+    function get_anchor_list() {
+        $.each($section_links, function(v,k) {
+            var link = k.href.split('#');
+            anchors.push(link[1]);
+        });
+        total_anchors = anchors.length;
+    }
+    get_anchor_list();
+
     
     /* 
      * When the screen resizes (and on init)
