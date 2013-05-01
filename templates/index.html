@@ -174,11 +174,14 @@
                     {% endif %}
                 </div>
 
-                <div class="span4 offset3">
+                <div class="span2 offset5">
+                    {% if person.photo_then %}
+                    <img class="photo-then" src="img/profiles/{{ person.photo_then }}" alt="{{ person.photo_then_credit }}" />
+                    {% endif %}
                     {% if person.photo_now_credit %}
-                    <p>Photos: 
-                        {{ person.photo_then_credit }};
-                        {{ person.photo_now_credit }}
+                    <p class="photo-credit">
+                        Photos: 
+                        {{ person.photo_then_credit }}{% if person.photo_then_credit %}; {{ person.photo_now_credit }}{% endif %}
                     </p>
                     {% endif %}
                 </div>
