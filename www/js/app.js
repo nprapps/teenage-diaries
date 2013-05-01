@@ -7,6 +7,10 @@ $(document).ready(function() {
     var $slide_row = $slide.find('.row');
     var $w = $(window);
     
+    var anchors = ['intro', 'amanda', 'juan', 'frankie', 'josh', 'melissa', 'cowbird', 'notebook', 'credits'];
+    var current_anchor = 0;
+    var total_anchors = anchors.length;
+
     var header_height = $header_container.height();
     var window_height = window.innerHeight;
     var window_width = window.innerWidth;
@@ -47,10 +51,43 @@ $(document).ready(function() {
         }, 1000, function() {
             window.location.hash = target;
         });
+        current_anchor = find_anchor_position(target);
+    }
+    function find_anchor_position(anchor) {
+        anchor = anchor.substr(1);
+        for (var i = 0; i < total_anchors; i++) {
+            if (anchor == anchors[i]) {
+                return i;
+            }
+        }
     }
     $section_links.on('click', function() {
         scroll_to_position($(this).attr('href'));
         return false;
+    });
+    $(document).keydown(function(ev) {
+        if (ev.which == 74) {
+            // go to previous slide
+            if (current_anchor >= 1) {
+                scroll_to_position('#' + anchors[current_anchor - 1]);
+            }
+            return false;
+        } else if (ev.which == 75) {
+            // go to next slide
+            if (current_anchor < (total_anchors - 1)) {
+                scroll_to_position('#' + anchors[current_anchor + 1]);
+            }
+            return false;
+        } else if (ev.which == 32 && audio_supported) {
+            // play or pause audio
+            if ($player.data().jPlayer.status.paused) {
+                $player.jPlayer('play');
+            } else {
+                $player.jPlayer('pause');
+            }
+            return false;
+        }
+        return true;
     });
 	
 
