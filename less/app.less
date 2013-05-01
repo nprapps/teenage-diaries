@@ -43,7 +43,7 @@ a:hover, a:active { color: #bccae5; text-decoration: none; }
 header {
     .main-hed, 
     nav ul.nav {
-        width: 1170px;
+        width: 940px;
         margin: 0 auto;
     }
 	h1 { 
@@ -73,8 +73,8 @@ header {
 
 	    ul.nav {
 	        li { 
-	            padding: 0 0 0 22px;
-	            margin: 0 0 0 22px;
+	            padding: 0 0 0 15px;
+	            margin: 0 0 0 15px;
 	            border-left: 1px solid #39393a;
 	            font-size: 14px;
 	            
@@ -139,14 +139,137 @@ header {
 
 // SLIDES
 #slides {
+    h2 {
+        margin: 0 0 22px 0;
+    }
+    p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
     .slide {
+        &.person h2 {
+            background-repeat: no-repeat;
+            height: 34px;
+            text-indent: -9999px;
+        }
         .row {
             background-repeat: none;
             background-size: cover;
             background-position: 50% 50%;
-            padding: 22px 0;
+            padding: 44px 0 22px 0;
         }
     }
+    .personal-stats {
+        list-style: none;
+        margin: 0 0 22px 0;
+        padding: 0;
+        font-size: 12px;
+    }
+    #amanda {
+        h2 { background-image: url('../img/title-amanda.png'); }
+    }
+    #frankie {
+        h2 { background-image: url('../img/title-frankie.png'); }
+    }
+    #josh {
+        h2 { background-image: url('../img/title-josh.png'); }
+    }
+    #juan {
+        h2 { background-image: url('../img/title-juan.png'); }
+    }
+    #melissa {
+        h2 { background-image: url('../img/title-melissa.png'); }
+    }
+}
+#cowbird-grid #cowbird .cb-bg {
+    background-color: transparent;
+}
+.audio {
+    &.primary {
+        .jp-controls { width: 66px; }
+        .jp-meta {
+            position: relative;
+            
+            h3 {
+                color: #7a96cc;
+                font-size: 16px;
+                font-weight: bold;
+                margin: 0 0 5px 11px;
+            }
+            .show, .duration {
+                font-size: 12px;
+                color: #999;
+                font-weight: bold;
+            }
+            .show { float: left; margin-left: 11px; }
+            .duration { float: right; }
+        }
+        .jp-play {
+            display: block;
+            width: 66px;
+            height: 66px;
+            text-indent: -9999px;
+            background: url('../img/btn-playpause-66.gif') no-repeat 0 0;
+        }
+        .jp-pause {
+            display: block;
+            width: 66px;
+            height: 66px;
+            text-indent: -9999px;
+            background: url('../img/btn-playpause-66.gif') no-repeat 0 -66px;
+        }
+        .jp-progress {
+            height: 66px;
+        }
+    }
+    &.secondary {
+        margin-bottom: 11px;
+        
+        .jp-controls { width: 33px; }
+        .jp-meta {
+            position: relative;
+
+            h3 { 
+                font-size: 13px;
+                margin: 0;
+                font-weight: bold;
+                color: #7a96cc;
+                line-height: 33px;
+                padding-left: 11px;
+                position: absolute;
+                top: 0; left: 0;
+            }
+        }
+        .jp-play {
+            display: block;
+            width: 33px;
+            height: 33px;
+            text-indent: -9999px;
+            background: url('../img/btn-playpause-33.gif') no-repeat 0 0;
+        }
+        .jp-pause {
+            display: block;
+            width: 33px;
+            height: 33px;
+            text-indent: -9999px;
+            background: url('../img/btn-playpause-33.gif') no-repeat 0 -33px;
+        }
+        .jp-progress {
+            height: 33px;
+        }
+    }
+    .jp-interface {
+        display: table;
+        width: 100%;
+    }
+    .jp-controls {
+        display: table-cell;
+    }
+    .jp-meta {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 }
 
 
@@ -183,8 +306,17 @@ footer {
 
 
 // Media queries
+@media (min-width: 1200px) {
+    header {
+        .main-hed, nav ul.nav { width: 1170px; }
+        nav ul.nav li { padding-left: 22px; margin-left: 22px; }
+    }
+}
 @media (max-width: 979px) {
-	nav .site-links-2 { display: none; }
+    header {
+        .main-hed, nav ul.nav { width: 724px; }
+        nav ul.nav li { padding-left: 9px; margin-left: 6px; }
+    }
 	footer {
 		.primary { float: none; }
 		.secondary ul, .secondary p { margin-left: 0; float: left; }
@@ -192,7 +324,10 @@ footer {
 }
 @media (max-width: 767px) {
 	nav, header, footer { margin-left: -20px; margin-right: -20px; }
-	nav .site-links { margin-left: 20px; }
+    header {
+        .main-hed, nav ul.nav { width: auto; }
+        nav ul.nav li { padding-left: 9px; margin-left: 6px; }
+    }
 	footer { 
 		.primary { display: none; }
 		.secondary p { float: left; font-size: 10px; color: #bccae5; }
@@ -202,16 +337,18 @@ footer {
 	}
 }
 @media (max-width: 480px) {
-	section.the-goods { margin-top: 33px; }
+	nav { display: none; }
 	h1 { font-size: 26px; }
 	#story-meta p { font-size: 11px; }
-	nav .site-links {
-		li { display: none; }
-		.npr { display: block; }
-	}
 	header {
-		padding: 33px 20px;
+	    margin: 0 -20px;
 		h1 { font-size: 36px; }
+		.header-wrap { padding: 0 20px; width: auto; }
+		.partners { 
+		    position: absolute;
+		    bottom: 20px;
+		    right: 20px;
+		}
 	}
 	footer { border-top: 1px solid #CCC; margin-top: 24px; }
 }

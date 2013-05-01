@@ -10,7 +10,7 @@ $(document).ready(function() {
     var header_height = $header_container.height();
     var window_height = window.innerHeight;
     var window_width = window.innerWidth;
-
+    
 
     /* 
      * When the screen resizes (and on init)
