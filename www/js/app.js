@@ -20,15 +20,19 @@ $(document).ready(function() {
      * When the screen resizes (and on init)
      */
     function resize_slideshow() {
+        // Resize slide based on screen dimensions
         window_height = window.innerHeight;
         window_width = window.innerWidth;
         header_height = $header_container.height();
-
-        // Resize slide based on screen dimensions
-        $slide_row.css('minHeight', window_height - header_height);
-
-        // Add margins to the slides to offset the header
-        $slide.css('paddingTop', header_height * 2);
+        max_height = 780; // 1170 width @ 3:2 radio
+//        max_height = 525; // 1170 width @ 4:3 radio
+        slide_height = window_height;
+        if (slide_height > max_height) {
+            slide_height = max_height;
+        }
+        $slide_row.css('minHeight', slide_height - header_height);
+        
+        $('#intro').css('paddingTop', header_height);
 
         // Kill affix plugin for small displays
         if (window_width < 768){
@@ -43,7 +47,7 @@ $(document).ready(function() {
      * Section jump links
      */
     function scroll_to_position(target) {
-    	var target_pos = $(target).offset().top + header_height;
+    	var target_pos = $(target).offset().top - header_height;
     	$('html, body').animate({
             scrollTop: target_pos
         }, 1000, function() {
