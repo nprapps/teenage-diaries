@@ -164,7 +164,7 @@ header {
             background-repeat: none;
             background-size: cover;
             background-position: 50% 50%;
-            padding: 44px 0 22px 0;
+            padding: 22px 0 22px 0;
             min-height: 700px;
         }
     }
@@ -193,6 +193,7 @@ header {
             .jp-play  { background: url('../img/btn-playpause-66.gif') no-repeat 0 0; }
             .jp-pause { background: url('../img/btn-playpause-66.gif') no-repeat 0 -@large-audio; }
             .jp-progress, .jp-play-bar { height: 66px; }
+            .audio-info { margin-top: -@large-audio; }
         }
         &.secondary {
             margin-bottom: 11px;
@@ -214,6 +215,7 @@ header {
             .jp-play  { background: url('../img/btn-playpause-33.gif') no-repeat 0 0; }
             .jp-pause { background: url('../img/btn-playpause-33.gif') no-repeat 0 -@small-audio; }
             .jp-progress, .jp-play-bar { height: 33px; }
+            .audio-info { margin-top: -@small-audio; }
         }
         .jp-interface {
             display: table;
@@ -242,8 +244,6 @@ header {
         }
         .audio-info {
             padding: 0 11px;
-            position: absolute;
-            top: 0; left: 0;
             -webkit-font-smoothing: antialiased;
             &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
         }
@@ -258,6 +258,8 @@ header {
         font-size: 12px;
     }
     .photo-then-wrap {
+        padding-top: 11px; 
+
         .photo-then {
             border: 3px solid #fff;
             margin-bottom: 11px;
@@ -288,6 +290,7 @@ header {
     }
     #juan {
         h2 { background-image: url('../img/title-juan.png'); }
+        .photo-then-wrap .photo-credit { color: #ddd; }
     }
     #melissa {
         h2 { background-image: url('../img/title-melissa.png'); }
