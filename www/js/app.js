@@ -7,7 +7,7 @@ $(document).ready(function() {
     var $slide_row = $slide.find('.row');
     var $w = $(window);
     
-    var anchors = ['intro', 'amanda', 'juan', 'frankie', 'josh', 'melissa', 'cowbird', 'notebook', 'credits'];
+    var anchors = ['intro', 'amanda', 'juan', 'frankie', 'josh', 'melissa', 'cowbird-grid', 'notebook', 'credits'];
     var current_anchor = 0;
     var total_anchors = anchors.length;
 
