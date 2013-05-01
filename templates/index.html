@@ -214,9 +214,14 @@
         {% if COPY.content.notebook_hed %}
         <div class="slide" id="notebook">
             <div class="row">
-                <div class="span12">
+                <div class="span8">
                     <h2>{{ COPY.content.notebook_hed }}</h2>
-                    <p>{{ COPY.content.notebook_description }}</p>
+                    <h3>{{ COPY.content.notebook_longer_hed }}</h3>
+                    <p class="introduction">{{ COPY.content.notebook_intro }}</h2>
+                    <div class="notebook-text">
+                        {{ COPY.content.notebook_text }}
+                    </div>
+                    <p class="footnote">{{ COPY.content.notebook_credit }}</p>
                 </div>
             </div>
         </div>
