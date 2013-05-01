@@ -19,36 +19,40 @@ $(document).ready(function() {
     /* 
      * When the screen resizes (and on init)
      */
-	function resize_slideshow() {
-		window_height = window.innerHeight;
-		window_width = window.innerWidth;
-		header_height = $header_container.height();
-
-        // Resize slide based on screen dimensions
-		$slide_row.css('minHeight', window_height - header_height);
-		
-		// Add margins to the slides to offset the header
-		$slide.css('paddingTop', header_height * 2);
+    function resize_slideshow() {
+        // Resize slide based on screen and header dimensions
+        window_height = window.innerHeight;
+        window_width = window.innerWidth;
+        header_height = $header_container.height();
+        max_height = 780; // 1170 width @ 3:2 radio
+//        max_height = 525; // 1170 width @ 4:3 radio
+        slide_height = window_height;
+        if (slide_height > max_height) {
+            slide_height = max_height;
+        }
+        $slide_row.css('minHeight', slide_height - header_height);
+        $slide.css('paddingTop', header_height);
+        $slide.css('marginBottom', -header_height);
 
         // Kill affix plugin for small displays
         if (window_width < 768){
             $header_container.removeAttr('data-spy');
         } else {
-            // set subnav affix top position to the top position of the subnav
+        // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
-            console.log(window_width);
         }
-	}
+    }
 
     /* 
      * Section jump links
      */
     function scroll_to_position(target) {
-    	var target_pos = $(target).offset().top + header_height;
+    	var target_pos = $(target).offset().top;
     	$('html, body').animate({
             scrollTop: target_pos
         }, 1000, function() {
             window.location.hash = target;
+            
         });
         current_anchor = find_anchor_position(target);
     }

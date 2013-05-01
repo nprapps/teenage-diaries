@@ -58,121 +58,133 @@
         <div class="slide person" id="{{ person.name|lower }}">
             <div class="row"{% if person.photo_now %} style="background-image: url('img/profiles/{{ person.photo_now }}');"{% endif %}>
                 <div class="span4">
+                    <div class="person-info">
 
-                    {% if person.full_name %}
-                    <h2>{{ person.full_name }}</h2>
-                    {% endif %}
+                        {% if person.name %}
+                        <h2>{{ person.name }}</h2>
+                        {% endif %}
 
-                    <ul class="personal-stats">
-                        {% if person.hometown %}
-                        <li><strong>Hometown:</strong> {{ person.hometown }}</li>
-                        {% endif %}
-                        {% if person.current_city %}
-                        <li><strong>Current City:</strong> {{ person.current_city }}</li>
-                        {% endif %}
-                        {% if person.occupation %}
-                        <li><strong>Occupation:</strong> {{ person.occupation }}</li>
-                        {% endif %}
-                    </ul>
+                        <ul class="personal-stats">
+                            {% if person.hometown %}
+                            <li><strong>Hometown:</strong> {{ person.hometown }}</li>
+                            {% endif %}
+                            {% if person.current_city %}
+                            <li><strong>Current City:</strong> {{ person.current_city }}</li>
+                            {% endif %}
+                            {% if person.occupation %}
+                            <li><strong>Occupation:</strong> {{ person.occupation }}</li>
+                            {% endif %}
+                        </ul>
 
-                    {% if person.audio_then_description %}
-                    <p class="description secondary"><strong>THEN:</strong> {{ person.audio_then_description }}</p>
-                    {% endif %}
-                    {% if person.audio_then_headline %}
-                    <div class="audio secondary">
-                        <div id="audio-{{ person.name|lower }}-secondary" class="jp-jplayer" data-url="{{ person.audio_then_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary"></div>
-                        <div id="jp_container_{{ person.name|lower }}_secondary" class="jp-audio">
-                            <div class="jp-type-single">
+                        {% if person.audio_then_description %}
+                        <p class="description secondary"><strong>THEN:</strong> {{ person.audio_then_description }}</p>
+                        {% endif %}
+                        {% if person.audio_then_headline %}
+                        <div class="audio secondary">
+                            <div id="audio-{{ person.name|lower }}-secondary" class="jp-jplayer" data-url="{{ person.audio_then_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary"></div>
+                            <div id="jp_container_{{ person.name|lower }}_secondary" class="jp-audio">
+                                <div class="jp-type-single">
     
-                                <div class="jp-gui jp-interface">
-                                    <div class="jp-controls">
-                                        <a href="javascript:;" class="jp-play" tabindex="1">play</a>
-                                        <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">pause</a>
-                                    </div>
+                                    <div class="jp-gui jp-interface">
+                                        <div class="jp-controls">
+                                            <a href="javascript:;" class="jp-play" tabindex="1">play</a>
+                                            <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">pause</a>
+                                        </div>
             
-                                    <div class="jp-meta">
-                                        <div class="jp-progress-container">
-                                            <div class="jp-progress">
-                                                <div class="jp-seek-bar">
-                                                    <div class="jp-play-bar"></div>
+                                        <div class="jp-meta">
+                                            <div class="jp-progress-container">
+                                                <div class="jp-progress">
+                                                    <div class="jp-seek-bar">
+                                                        <div class="jp-play-bar"></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <h3>{{ person.audio_then_headline }}</h3>
+
+                                            <div class="audio-info">
+                                                <h3>{{ person.audio_then_headline }}</h3>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endif %}
+                        {% endif %}
 
-                    {% if person.audio_then2_headline %}
-                    <div class="audio secondary">
-                        <div id="audio-{{ person.name|lower }}-secondary2" class="jp-jplayer" data-url="{{ person.audio_then2_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary2"></div>
-                        <div id="jp_container_{{ person.name|lower }}_secondary2" class="jp-audio">
-                            <div class="jp-type-single">
+                        {% if person.audio_then2_headline %}
+                        <div class="audio secondary">
+                            <div id="audio-{{ person.name|lower }}-secondary2" class="jp-jplayer" data-url="{{ person.audio_then2_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary2"></div>
+                            <div id="jp_container_{{ person.name|lower }}_secondary2" class="jp-audio">
+                                <div class="jp-type-single">
     
-                                <div class="jp-gui jp-interface">
-                                    <div class="jp-controls">
-                                        <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i>play</i></a>
-                                        <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i>pause</i></a>
-                                    </div>
+                                    <div class="jp-gui jp-interface">
+                                        <div class="jp-controls">
+                                            <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i>play</i></a>
+                                            <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i>pause</i></a>
+                                        </div>
             
-                                    <div class="jp-meta">
-                                        <div class="jp-progress-container">
-                                            <div class="jp-progress">
-                                                <div class="jp-seek-bar">
-                                                    <div class="jp-play-bar"></div>
+                                        <div class="jp-meta">
+                                            <div class="jp-progress-container">
+                                                <div class="jp-progress">
+                                                    <div class="jp-seek-bar">
+                                                        <div class="jp-play-bar"></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <h3>{{ person.audio_then2_headline }}</h3>
+
+                                            <div class="audio-info">
+                                                <h3>{{ person.audio_then2_headline }}</h3>
+                                            </div>
+ 
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endif %}
+                        {% endif %}
 
-                    {% if person.audio_now_description %}
-                    <p class="description primary"><strong>NOW:</strong> {{ person.audio_now_description }}</p>
-                    {% endif %}
-                    {% if person.audio_now_headline %}
-                    <div class="audio primary">
-                        <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer" data-url="{{ person.audio_now_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_primary"></div>
-                        <div id="jp_container_{{ person.name|lower }}_primary" class="jp-audio">
-                            <div class="jp-type-single">
+                        {% if person.audio_now_description %}
+                        <p class="description primary"><strong>NOW:</strong> {{ person.audio_now_description }}</p>
+                        {% endif %}
+                        {% if person.audio_now_headline %}
+                        <div class="audio primary">
+                            <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer" data-url="{{ person.audio_now_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_primary"></div>
+                            <div id="jp_container_{{ person.name|lower }}_primary" class="jp-audio">
+                                <div class="jp-type-single">
     
-                                <div class="jp-gui jp-interface">
-                                    <div class="jp-controls">
-                                        <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i>play</i></a>
-                                        <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i>pause</i></a>
-                                    </div>
+                                    <div class="jp-gui jp-interface">
+                                        <div class="jp-controls">
+                                            <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i>play</i></a>
+                                            <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i>pause</i></a>
+                                        </div>
             
-                                    <div class="jp-meta">
-                                        <div class="jp-progress-container">
-                                            <div class="jp-progress">
-                                                <div class="jp-seek-bar">
-                                                    <div class="jp-play-bar"></div>
-
-                                                    <h3>{{ person.audio_now_headline }}</h3>
-                                                    {% if person.audio_now_show %}
-                                                    <p class="show">{{ person.audio_now_show }}</p>
-                                                    {% endif %}
-                                                    {% if person.audio_now_length %}
-                                                    <p class="duration">{{ person.audio_now_length }}</p>
-                                                    {% endif %}
-
+                                        <div class="jp-meta">
+                                            <div class="jp-progress-container">
+                                                <div class="jp-progress">
+                                                    <div class="jp-seek-bar">
+                                                        <div class="jp-play-bar"></div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        
+                                            <div class="audio-info">
+                                                <h3>{{ person.audio_now_headline }}</h3>
+                                                {% if person.audio_now_show %}
+                                                <p class="show">{{ person.audio_now_show }}</p>
+                                                {% endif %}
+                                                {% if person.audio_now_length %}
+                                                <p class="duration">{{ person.audio_now_length }}</p>
+                                                {% endif %}
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endif %}
-                </div>
+                        {% endif %}
+                    </div> <!-- end .person-info -->
+                </div> <!-- end span -->
 
                 <div class="span2 offset5 photo-then-wrap">
                     {% if person.photo_then %}
@@ -215,6 +227,7 @@
                 <div class="span12">
                     <h2>{{ COPY.content.project_credits_hed }}</h2>
                     <p>{{ COPY.content.project_credits }}</p>
+                    <p class="repo-link">{{ COPY.content.repo_info }}</p>
                 </div>
             </div>
         </div>
