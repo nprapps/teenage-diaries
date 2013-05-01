@@ -66,7 +66,6 @@ $(document).ready(function() {
             scrollTop: target_pos
         }, 1000, function() {
             window.location.hash = target;
-            
         });
         current_anchor = find_anchor_position(target);
     }

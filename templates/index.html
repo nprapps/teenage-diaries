@@ -44,8 +44,8 @@
 
 {% block wide_content %}
 <div id="slides">
-    <div class="container">
-        <div class="slide" id="intro">
+    <div class="slide" id="intro">
+        <div class="container">
             <div class="row">
                 <div class="span12">
                     {% if COPY.content.intro_text %}
@@ -54,8 +54,10 @@
                 </div>
             </div>
         </div>
-        {% for person in COPY.people %}
-        <div class="slide person" id="{{ person.name|lower }}">
+    </div>
+    {% for person in COPY.people %}
+    <div class="slide person" id="{{ person.name|lower }}">
+        <div class="container">
             <div class="row"{% if person.photo_now %} style="background-image: url('img/profiles/{{ person.photo_now }}');"{% endif %}>
                 <div class="span4">
                     <div class="person-info">
@@ -199,9 +201,11 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
-        {% if COPY.content.cowbird_hed %}
-        <div class="slide" id="cowbird-grid">
+    </div> <!-- end container -->
+    {% endfor %}
+    {% if COPY.content.cowbird_hed %}
+    <div class="slide" id="cowbird-grid">
+        <div class="container">
             <div class="row">
                 <div class="span12">
                     <h2>{{ COPY.content.cowbird_hed }}</h2>
@@ -210,9 +214,11 @@
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% if COPY.content.notebook_hed %}
-        <div class="slide" id="notebook">
+    </div>
+    {% endif %}
+    {% if COPY.content.notebook_hed %}
+    <div class="slide" id="notebook">
+        <div class="container">
             <div class="row">
                 <div class="span8">
                     <h2>{{ COPY.content.notebook_hed }}</h2>
@@ -225,9 +231,11 @@
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% if COPY.content.project_credits %}
-        <div class="slide" id="credits">
+    </div>
+    {% endif %}
+    {% if COPY.content.project_credits %}
+    <div class="slide" id="credits">
+        <div class="container">
             <div class="row">
                 <div class="span12">
                     <h2>{{ COPY.content.project_credits_hed }}</h2>
@@ -236,8 +244,8 @@
                 </div>
             </div>
         </div>
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 {% endblock %}
 
