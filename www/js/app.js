@@ -107,7 +107,8 @@ $(document).ready(function() {
                     $(this).jPlayer('pauseOthers');
                 },
                 swfPath: 'js',
-                supplied: 'mp3'
+                supplied: 'mp3',
+                cssSelectorAncestor: $(this).data('selector')
             });
         });
     }
