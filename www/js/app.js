@@ -19,26 +19,25 @@ $(document).ready(function() {
     /* 
      * When the screen resizes (and on init)
      */
-	function resize_slideshow() {
-		window_height = window.innerHeight;
-		window_width = window.innerWidth;
-		header_height = $header_container.height();
+    function resize_slideshow() {
+        window_height = window.innerHeight;
+        window_width = window.innerWidth;
+        header_height = $header_container.height();
 
         // Resize slide based on screen dimensions
-		$slide_row.css('minHeight', window_height - header_height);
-		
-		// Add margins to the slides to offset the header
-		$slide.css('paddingTop', header_height * 2);
+        $slide_row.css('minHeight', window_height - header_height);
+
+        // Add margins to the slides to offset the header
+        $slide.css('paddingTop', header_height * 2);
 
         // Kill affix plugin for small displays
         if (window_width < 768){
             $header_container.removeAttr('data-spy');
         } else {
-            // set subnav affix top position to the top position of the subnav
+        // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
-            console.log(window_width);
         }
-	}
+    }
 
     /* 
      * Section jump links
