@@ -107,6 +107,7 @@ $(document).ready(function() {
                     $(this).jPlayer('pauseOthers');
                 },
                 swfPath: 'js',
+                solution: 'flash, html',
                 supplied: 'mp3',
                 cssSelectorAncestor: $(this).data('selector')
             });
