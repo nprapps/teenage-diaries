@@ -3,17 +3,16 @@
 from glob import glob
 import os
 from shutil import rmtree
-from itertools import chain
 
 from PIL import Image
 
-output_dir = 'www/img/art'
-widths = [120, 480, 979, 1200]
+output_dir = 'www/img/profiles'
+widths = [300, 480, 980]
 
 rmtree(output_dir)
 os.mkdir(output_dir)
 
-for path in chain(glob('art/*.JPG'), glob('art/*.png')):
+for path in glob('profiles/*'):
     filename = os.path.split(path)[-1]
     name = os.path.splitext(filename)[0]
 

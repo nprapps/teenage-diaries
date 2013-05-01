@@ -7,6 +7,7 @@ $(document).ready(function() {
     var $slide_row = $slide.find('.row');
     var $w = $(window);
     var $players = $('.jp-jplayer');
+    var $persons = $('.person');
     
     var anchors = [];
     var current_anchor = 0;
@@ -127,6 +128,22 @@ $(document).ready(function() {
         return true;
     });
 	
+    /*
+     * Background images
+	*/
+    function init_profile_photos() {
+        if (window.innerWidth > 480) { 
+            $persons.each(function() {
+                var id = $(this).attr('id');
+                var $row = $(this).find('.row');
+                var img_url = $row.css('background-image');
+
+                img_url = img_url.replace('480', '980');
+
+                $row.css('background-image', img_url);
+            });
+            }
+    }
 
     /*
      * Audio
@@ -158,6 +175,7 @@ $(document).ready(function() {
     get_anchor_list();
 	resize_slideshow();
 	$w.resize(resize_slideshow);
+    init_profile_photos();
 	check_initial_hash();
     init_audio();
 });

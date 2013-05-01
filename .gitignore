@@ -39,5 +39,5 @@ www/js/templates.js
 www/js/app_config.js
 confs/rendered/*
 data/copy.xls
-art/*
-www/img/art/*
+profiles/*
+www/img/profiles/*
