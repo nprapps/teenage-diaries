@@ -220,10 +220,22 @@
     <div class="slide" id="notebook">
         <div class="container">
             <div class="row">
-                <div class="span8">
+                <div class="span12">
                     <h2>{{ COPY.content.notebook_hed }}</h2>
                     <h3>{{ COPY.content.notebook_longer_hed }}</h3>
                     <p class="introduction">{{ COPY.content.notebook_intro }}</h2>
+                </div>
+                <div class="span4 notebook-photo-wrap">
+                    {% if COPY.content.notebook_photo %}
+                    <img class="notebook-photo" src="img/profiles/{{ COPY.content.notebook_photo }}" alt="{{ COPY.content.notebook_photo_credit }}" />
+                    {% endif %}
+                    {% if COPY.content.notebook_photo_credit %}
+                    <p class="photo-credit">
+                        {{ COPY.content.notebook_photo_credit }}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="span8">
                     <div class="notebook-text">
                         {{ COPY.content.notebook_text }}
                     </div>
