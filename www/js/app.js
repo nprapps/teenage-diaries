@@ -44,9 +44,6 @@ $(document).ready(function() {
         if (slide_height > max_height) {
             slide_height = max_height;
         }
-        $slide_row.css('minHeight', slide_height - header_height);
-        $slide.css('paddingTop', header_height);
-        $slide.css('marginBottom', -header_height);
 
         // Kill affix plugin for small displays
         if (window_width < 768){
@@ -54,6 +51,9 @@ $(document).ready(function() {
         } else {
         // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
+            $slide_row.css('minHeight', slide_height - header_height);
+            $slide.css('paddingTop', header_height);
+            $slide.css('marginBottom', -header_height);
         }
     }
 

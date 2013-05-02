@@ -192,10 +192,9 @@
                     {% if person.photo_then %}
                     <img class="photo-then" src="img/profiles/{{ person.photo_then }}" alt="{{ person.photo_then_credit }}" />
                     {% endif %}
-                    {% if person.photo_now_credit %}
+                    {% if person.photo_then_caption %}
                     <p class="photo-credit">
-                        Photos: 
-                        {{ person.photo_then_credit }}{% if person.photo_then_credit %}; {{ person.photo_now_credit }}{% endif %}
+                        {{ person.photo_then_caption }}
                     </p>
                     {% endif %}
                 </div>
@@ -229,9 +228,9 @@
                     {% if COPY.content.notebook_photo %}
                     <img class="notebook-photo" src="img/profiles/{{ COPY.content.notebook_photo }}" alt="{{ COPY.content.notebook_photo_credit }}" />
                     {% endif %}
-                    {% if COPY.content.notebook_photo_credit %}
-                    <p class="photo-credit">
-                        {{ COPY.content.notebook_photo_credit }}
+                    {% if COPY.content.notebook_credit %}
+                    <p class="footnote">
+                        {{ COPY.content.notebook_credit }}
                     </p>
                     {% endif %}
                 </div>
@@ -239,7 +238,6 @@
                     <div class="notebook-text">
                         {{ COPY.content.notebook_text }}
                     </div>
-                    <p class="footnote">{{ COPY.content.notebook_credit }}</p>
                 </div>
             </div>
         </div>

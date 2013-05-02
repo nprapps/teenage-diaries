@@ -145,6 +145,7 @@ header {
 #slides {
     h2 {
         margin: 0 0 22px 0;
+        font-size: 22px;
     }
     p {
         font-size: 13px;
@@ -166,7 +167,7 @@ header {
             .row { border-top: 2px solid #39393A; }
         }
         .row {
-            background-repeat: none;
+            background-repeat: no-repeat;
             background-size: cover;
             background-position: 50% 50%;
             padding: 22px 0 22px 0;
@@ -320,6 +321,7 @@ header {
         }
         h3 {
             margin: 0 0 22px 0;
+            font-size: 28px;
         }
         p {
             &.introduction {
@@ -331,6 +333,7 @@ header {
                 color: #999;
                 font-style: italic;
                 font-size: 12px;
+                margin-top: 11px;
             }
         }
         p, li {
@@ -343,10 +346,14 @@ header {
             line-height: 1.6;
             color: #999;
         }
+        img.notebook-photo {
+            width: 100%;
+            height: auto;
+        }
     }
     #credits { 
         color: #666;
-        background-color: #ebebeb;
+        background-color: #e0e0e0;
         padding-bottom: 112px;
 
         h2 { color: #666; }
@@ -359,6 +366,7 @@ footer {
 	padding: 0 15px 10px 15px;
 	font-size: 10px;
 	border-top: 2px solid #e0e0e0;
+	background-color: #fff;
 
 	ul { list-style: none; margin: 0; padding: 0; }
 	li, p { float: left; }
@@ -403,7 +411,10 @@ footer {
 	}
 }
 @media (max-width: 767px) {
-	header, footer { margin-left: -20px; margin-right: -20px; }
+    body { padding-right: 0; padding-left: 0; }
+    #intro, #cowbird-grid, #notebook, #credits {
+        .container { padding-left: 20px; padding-right: 20px; }
+    }
     header {
         .main-hed, nav ul.nav { width: auto; padding: 0 20px; }
         nav ul.nav li { padding-left: 9px; margin-left: 6px; }
@@ -415,6 +426,16 @@ footer {
 		.secondary li { font-size: 10px; text-transform: none; }
 		.secondary a { color: #bccae5; }
 	}
+    #slides {
+        #notebook, #credits {
+            .row { padding-top: 44px; }
+        }
+    }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+    #slides #notebook {
+        .notebook-photo-wrap { width: 40%; margin-left: 22px; float: right; }
+    }
 }
 @media (max-width: 480px) {
 	nav { display: none; }
@@ -430,5 +451,12 @@ footer {
 		    right: 20px;
 		}
 	}
-	footer { border-top: 1px solid #CCC; margin-top: 24px; }
+	footer { border-top: 1px solid #ccc; }
+	#slides {
+	    h2 { font-size: 18px; }
+
+        #notebook {
+            p.introduction { font-size: 14px; }
+        }
+    }
 }
