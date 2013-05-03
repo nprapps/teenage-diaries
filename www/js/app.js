@@ -105,13 +105,13 @@ $(document).ready(function() {
      * j/k key navigation
      */
     $(document).keydown(function(ev) {
-        if (ev.which == 74) {
+        if (ev.which == 75) {
             // go to previous slide
             if (current_anchor >= 1) {
                 scroll_to_position('#' + anchors[current_anchor - 1]);
             }
             return false;
-        } else if (ev.which == 75) {
+        } else if (ev.which == 74) {
             // go to next slide
             if (current_anchor < (total_anchors - 1)) {
                 scroll_to_position('#' + anchors[current_anchor + 1]);
