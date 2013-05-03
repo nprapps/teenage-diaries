@@ -144,9 +144,8 @@ $(document).ready(function() {
 
             if (window.innerWidth > 480) { 
                 img_url = img_url.replace('480', '980');
+                $row.css('background-image', 'url(' + img_url + ')');
             }
-
-            $row.css('background-image', 'url(' + img_url + ')');
         });
     }
 
