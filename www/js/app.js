@@ -50,7 +50,7 @@ $(document).ready(function() {
         if (window_width <= mobile_width){
             // Kill affix plugin for small displays
             $header_container.removeAttr('data-spy');
-            $slide_row.css('minHeight', 'auto');
+            $slide_row.css('minHeight', 0);
             $slide.css('paddingTop', 0);
             $slide.css('marginBottom', 0);
 

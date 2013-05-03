@@ -42,6 +42,37 @@ a:hover, a:active { color: #bccae5; text-decoration: none; }
 
 
 // Header
+.partners {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        font-size: 11px;
+        color: #666;
+        line-height: 66px;
+        padding: 0 11px;
+        display: inline-block;
+    
+        &.txt { padding-left: 0; }
+        &.npr a {
+            text-indent: -9999px;
+            width: 68px;
+            height: 66px;
+            background: url('@{img-root}/partner-logo-npr.png') no-repeat 50% 50%;
+            display: inline-block;
+            opacity: .6;
+        }
+        &.radio-diaries a {
+            text-indent: -9999px;
+            width: 48px;
+            height: 66px;
+            background: url('@{img-root}/partner-logo-radio-diaries.png') no-repeat 50% 50%;
+            display: inline-block;
+        }
+    }
+}
 header {
     .main-hed, 
     nav ul.nav {
@@ -100,31 +131,7 @@ header {
 	    float: right; 
 	    margin-top: -89px;
 
-	    ul {
-	        float: right;
-        }
-	    li {
-	        font-size: 11px;
-	        color: #666;
-            line-height: 66px;
-            padding: 0 11px;
-            
-            &.npr a {
-                text-indent: -9999px;
-                width: 68px;
-                height: 66px;
-                background: url('@{img-root}/partner-logo-npr.png') no-repeat 50% 50%;
-                display: inline-block;
-                opacity: .6;
-            }
-            &.radio-diaries a {
-                text-indent: -9999px;
-                width: 48px;
-                height: 66px;
-                background: url('@{img-root}/partner-logo-radio-diaries.png') no-repeat 50% 50%;
-                display: inline-block;
-            }
-	    }
+	    ul { float: right; }
 	}
 	.header-wrap {
 	    width: 100%;
@@ -403,6 +410,8 @@ footer {
 }
 @media (max-width: 979px) {
     header {
+        margin-bottom: 33px;
+
         .header-wrap {
             background: none;
             padding: 0;
@@ -419,14 +428,7 @@ footer {
                 padding: 0 20px;
                 background-color: #222;
             }
-            .partners {
-                padding: 0 20px;
-                float: none;
-                margin-top: 0;
-                
-                ul { float: none; }
-                li.txt { padding-left: 0; }
-            }
+            .partners { display: none; }
         }
         nav {
             position: absolute;
@@ -477,16 +479,19 @@ footer {
             &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
         }
         .photo-then-wrap { display: none; }
-        .slide {
-            .row { padding: 0; }
+        .slide .row { 
+            padding: 0;
+            min-height: 0;
         }
         .person-info { 
-            padding: 22px 0 44px 0;
+            padding: 22px 0 66px 0;
             background: none;
         }
         .person-info-wrap { width: auto; float: none; }
 
-        #intro { min-height: 350px; }
+        #intro { 
+            .span8 { padding-bottom: 33px; }
+        }
         #cowbird-grid, #credits {
             .span12 { padding-top: 33px; padding-bottom: 33px; }
         }
@@ -506,9 +511,6 @@ footer {
         .container { padding-left: 20px; padding-right: 20px; }
     }
     #slides {
-        .slide .row {
-            min-height: auto;
-        }
         .slide.person .row {
             padding: 0 20px;
         }
