@@ -23,7 +23,7 @@ S3_BUCKETS = []
 SERVERS = []
 DEBUG = True
 
-PROJECT_DESCRIPTION = 'An opinionated project template for client-side apps.'
+PROJECT_DESCRIPTION = "In 1996, Radio Diaries gave tape recorders to teenagers to create audio diaries about their lives. Amanda, Juan, Frankie, Josh and Melissa are now in their 30s and have recorded new stories about where life has led them."
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 COPY_GOOGLE_DOC_KEY = '0Ala-N4Y4VPXIdFNKV00tOGpLU1gxaG1BcTB3NnBCRUE'
@@ -37,7 +37,7 @@ FACEBOOK = {
     'TITLE': PROJECT_NAME,
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
-    'IMAGE_URL': '',
+    'IMAGE_URL': 'http://apps.npr.org/teenage-diaries/img/frankie_facebook.jpg',
     'APP_ID': '138837436154588'
 }
 
