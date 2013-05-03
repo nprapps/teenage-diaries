@@ -145,10 +145,8 @@
                         </div>
                         {% endif %}
 
-                        {% if person.audio_now_description %}
                         <p class="description primary"><strong>NOW:</strong> {{ person.audio_now_description }}</p>
-                        {% endif %}
-                        {% if person.audio_now_headline %}
+                        {% if person.audio_now_mp3 %}
                         <div class="audio primary">
                             <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer" data-url="{{ person.audio_now_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_primary"></div>
                             <div id="jp_container_{{ person.name|lower }}_primary" class="jp-audio">
@@ -184,6 +182,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% elif person.audio_now_coming %}
+                        <p class="coming-soon">{{ person.audio_now_coming }}</p>
                         {% endif %}
                     </div> <!-- end .person-info -->
                 </div> <!-- end span -->

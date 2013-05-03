@@ -151,11 +151,15 @@ header {
         font-size: 13px;
         line-height: 1.4;
         
-        &.repo-link {
-            font-size: 12px;
-            font-weight: bold;
-            margin-top: 44px;
+        &.coming-soon {
+            font-style: italic;
+            background: #333;
+            background: rgba(51,51,51,.65);
+            padding: 11px;
+            color: #999;
+            margin: 0;
         }
+        &.description.primary { margin-top: 33px; }
     }
     .slide {
         &.person {
@@ -255,7 +259,6 @@ header {
 
         &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
     }
-    .description.primary { margin-top: 33px; }
     .personal-stats {
         list-style: none;
         margin: 0 0 22px 0;
@@ -281,7 +284,7 @@ header {
         }
     }
     .person-info {
-        background: rgba(48,48,48,.6);
+        background: rgba(48,48,48,.7);
         padding: 22px;
     }
     #amanda {
@@ -294,7 +297,7 @@ header {
     #josh {
         h2 { background-image: url('../img/title-josh.png'); }
         .photo-then-wrap { padding-top: 200px; }
-        .photo-then-wrap .photo-credit { color: #333; }
+        .photo-then-wrap .photo-credit { color: #454545; }
     }
     #juan {
         h2 { background-image: url('../img/title-juan.png'); }
@@ -329,6 +332,8 @@ header {
                 font-size: 16px;
                 line-height: 1.6;
                 font-style: italic;
+                
+                em { font-style: normal; }
             }
             &.footnote {
                 color: #999;
