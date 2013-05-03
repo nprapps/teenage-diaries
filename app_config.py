@@ -42,8 +42,8 @@ FACEBOOK = {
 }
 
 NPR_DFP = {
-    'STORY_ID': '171421875',
-    'TARGET': '\/news_politics;storyid=171421875'
+    'STORY_ID': '180040786',
+    'TARGET': '\/arts___life;program=all_things_considered;agg=92479240;theme=92479240;storyid=180040786'
 }
 
 GOOGLE_ANALYTICS_ID = 'UA-5828686-4'
