@@ -88,7 +88,6 @@ header {
 	            }
 	            a, a:link, a:visited { color: #ccc; }
 	            a:hover, a:active { color: #fff; }
-//	            &.active a, &.active a:link, &.active a:visited { color: #777; }
 	        }
 	    }
 	    .nav > li > a:hover { background-color: transparent; }
@@ -305,11 +304,11 @@ header {
     }
     #cowbird-grid {
         padding-bottom: 112px;
+        background-color: #222;
 
         #cowbird .cb-bg { background-color: transparent; }
-        #cowbird-mosaic .cb-item { border: none; margin: 0 2px 2px 0; }
+        #cowbird-mosaic .cb-item { border: none; margin: 0 1px 1px 0; }
         #cowbird-summary { display: none; }
-        .row { border-top: 2px solid #39393A; }
     }
     #notebook {
         background-color: #ebebeb;
@@ -455,9 +454,6 @@ footer {
                     margin: 0;
                     border: none;
                     border-top: 1px solid #39393A;
-                    
-//                    &.active a, &.active a:link, &.active a:visited { color: inherit; }
-//                    &.active a:hover, &.active a:active { color: #ccc; }
                 }
             }
         }
@@ -473,7 +469,7 @@ footer {
 
             .photo-then, .photo-now {
                 width: 50%; 
-                height: 200px;
+                height: 300px;
                 background-position: 50% 50%;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -483,8 +479,15 @@ footer {
         }
         .photo-then-wrap { display: none; }
         .slide {
-//            .row { background: none; }
+            .row { padding: 0; }
         }
+        .person-info { 
+            padding: 22px 0 88px 0;
+            background: none;
+        }
+        .person-info-wrap { width: auto; float: none; }
+        
+        #intro { min-height: 350px; }
     }
 	footer {
 		.primary { float: none; }

@@ -15,7 +15,9 @@ $(document).ready(function() {
 
     var header_height = $header_container.height();
     var window_height = window.innerHeight;
-    var window_width = window.innerWidth;
+//    var window_width = window.innerWidth;
+    var window_width = $('#slides').width();
+    var mobile_width = 979;
     
 
     /*
@@ -36,7 +38,7 @@ $(document).ready(function() {
     function resize_slideshow() {
         // Resize slide based on screen and header dimensions -- but only for larger screens
         window_height = window.innerHeight;
-        window_width = window.innerWidth;
+        window_width = $('#slides').width();
         header_height = $header_container.height();
         max_height = 780; // 1170 width @ 3:2 radio
 //        max_height = 525; // 1170 width @ 4:3 radio
@@ -46,8 +48,11 @@ $(document).ready(function() {
         }
 
         // Kill affix plugin for small displays
-        if (window_width < 979){
+        if (window_width <= mobile_width){
             $header_container.removeAttr('data-spy');
+            $slide_row.css('minHeight', 'auto');
+            $slide.css('paddingTop', 0);
+            $slide.css('marginBottom', 0);
         } else {
             // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
@@ -57,6 +62,8 @@ $(document).ready(function() {
             $slide.css('paddingTop', header_height);
             $slide.css('marginBottom', -header_height);
         }
+        
+        init_profile_photos();
     }
 
     /* 
@@ -133,7 +140,7 @@ $(document).ready(function() {
      * Background images
 	*/
     function init_profile_photos() {
-        if ($('#slides').width() > 480) { 
+        if (window_width >= mobile_width) { 
             $persons.each(function() {
                 var id = $(this).attr('id');
                 var $row = $(this).find('.row');
@@ -145,6 +152,11 @@ $(document).ready(function() {
 
                 img_url = img_url.replace('480', '980');
                 $row.css('background-image', 'url(' + img_url + ')');
+            });
+        } else {
+            $persons.each(function() {
+                var $row = $(this).find('.row');
+                $row.css('background-image', 'none');
             });
         }
     }
@@ -179,7 +191,7 @@ $(document).ready(function() {
     get_anchor_list();
 	resize_slideshow();
 	$w.resize(resize_slideshow);
-    init_profile_photos();
+//    init_profile_photos();
 	check_initial_hash();
     init_audio();
 });
