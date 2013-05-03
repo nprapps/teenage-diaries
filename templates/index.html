@@ -250,6 +250,10 @@
                 <div class="span12">
                     <h2>{{ COPY.content.project_credits_hed }}</h2>
                     <p>{{ COPY.content.project_credits }}</p>
+                    
+                    {% if COPY.content.comment_link %}
+                    <p class="comment-link"><a class="btn btn-blue" href="{{ COPY.content.comment_link }}}" target="_blank">{{ COPY.content.comment_link_text }}</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
