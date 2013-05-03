@@ -132,17 +132,21 @@ $(document).ready(function() {
      * Background images
 	*/
     function init_profile_photos() {
-        if (window.innerWidth > 480) { 
-            $persons.each(function() {
-                var id = $(this).attr('id');
-                var $row = $(this).find('.row');
-                var img_url = $row.css('background-image');
+        $persons.each(function() {
+            var id = $(this).attr('id');
+            var $row = $(this).find('.row');
+            var img_url = $row.data('image');
 
-                img_url = img_url.replace('480', '980');
-
-                $row.css('background-image', img_url);
-            });
+            if (!img_url) {
+                return;
             }
+
+            if (window.innerWidth > 480) { 
+                img_url = img_url.replace('480', '980');
+            }
+
+            $row.css('background-image', 'url(' + img_url + ')');
+        });
     }
 
     /*

@@ -56,7 +56,7 @@
         </div>
         {% for person in COPY.people %}
         <div class="slide person" id="{{ person.name|lower }}">
-            <div class="row"{% if person.photo_now %} style="background-image: url('img/profiles/{{ person.photo_now }}');"{% endif %}>
+            <div class="row"{% if person.photo_now %} data-image="img/profiles/{{ person.photo_now }}"{% endif %}>
                 <div class="span4">
                     <div class="person-info">
 
