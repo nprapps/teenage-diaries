@@ -34,7 +34,7 @@ $(document).ready(function() {
      * When the screen resizes (and on init)
      */
     function resize_slideshow() {
-        // Resize slide based on screen and header dimensions
+        // Resize slide based on screen and header dimensions -- but only for larger screens
         window_height = window.innerHeight;
         window_width = window.innerWidth;
         header_height = $header_container.height();
@@ -49,8 +49,10 @@ $(document).ready(function() {
         if (window_width < 768){
             $header_container.removeAttr('data-spy');
         } else {
-        // set subnav affix top position to the top position of the subnav
+            // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
+            
+            // set min height of each slide
             $slide_row.css('minHeight', slide_height - header_height);
             $slide.css('paddingTop', header_height);
             $slide.css('marginBottom', -header_height);
