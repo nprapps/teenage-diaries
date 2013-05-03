@@ -47,12 +47,18 @@ $(document).ready(function() {
             slide_height = max_height;
         }
 
-        // Kill affix plugin for small displays
         if (window_width <= mobile_width){
+            // Kill affix plugin for small displays
             $header_container.removeAttr('data-spy');
             $slide_row.css('minHeight', 'auto');
             $slide.css('paddingTop', 0);
             $slide.css('marginBottom', 0);
+
+            // disable background images on profiles
+            $persons.each(function() {
+                var $row = $(this).find('.row');
+                $row.css('background-image', 'none');
+            });
         } else {
             // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
@@ -61,9 +67,21 @@ $(document).ready(function() {
             $slide_row.css('minHeight', slide_height - header_height);
             $slide.css('paddingTop', header_height);
             $slide.css('marginBottom', -header_height);
+            
+            // profile photos - different settings for mobile/tablet vs. desktop
+            $persons.each(function() {
+                var id = $(this).attr('id');
+                var $row = $(this).find('.row');
+                var img_url = $row.data('image');
+
+                if (!img_url) {
+                    return;
+                }
+
+                img_url = img_url.replace('480', '980');
+                $row.css('background-image', 'url(' + img_url + ')');
+            });
         }
-        
-        init_profile_photos();
     }
 
     /* 
@@ -136,30 +154,6 @@ $(document).ready(function() {
         return true;
     });
 	
-    /*
-     * Background images
-	*/
-    function init_profile_photos() {
-        if (window_width >= mobile_width) { 
-            $persons.each(function() {
-                var id = $(this).attr('id');
-                var $row = $(this).find('.row');
-                var img_url = $row.data('image');
-
-                if (!img_url) {
-                    return;
-                }
-
-                img_url = img_url.replace('480', '980');
-                $row.css('background-image', 'url(' + img_url + ')');
-            });
-        } else {
-            $persons.each(function() {
-                var $row = $(this).find('.row');
-                $row.css('background-image', 'none');
-            });
-        }
-    }
 
     /*
      * Audio
@@ -191,7 +185,6 @@ $(document).ready(function() {
     get_anchor_list();
 	resize_slideshow();
 	$w.resize(resize_slideshow);
-//    init_profile_photos();
 	check_initial_hash();
     init_audio();
 });
