@@ -303,18 +303,16 @@ header {
         h2 { background-image: url('../img/title-melissa.png'); }
     }
     #cowbird-grid {
-        padding-bottom: 112px;
         background-color: #222;
 
+        .span12 { padding-bottom: 112px; }
         #cowbird .cb-bg { background-color: transparent; }
-        #cowbird-mosaic .cb-item { border: none; margin: 0 1px 1px 0; }
         #cowbird-summary { display: none; }
     }
     #notebook {
         background-color: #ebebeb;
         color: #666;
-        padding-bottom: 112px;
-        
+
         h2 { 
             color: #666;
             margin: 0 0 5px 0;
@@ -352,13 +350,14 @@ header {
             width: 100%;
             height: auto;
         }
+        .span8 { padding-bottom: 112px; }
     }
     #credits { 
         color: #666;
         background-color: #e0e0e0;
-        padding-bottom: 112px;
 
         h2 { color: #666; }
+        .span12 { padding-bottom: 112px; }
     }
 }
 
@@ -482,12 +481,19 @@ footer {
             .row { padding: 0; }
         }
         .person-info { 
-            padding: 22px 0 88px 0;
+            padding: 22px 0 44px 0;
             background: none;
         }
         .person-info-wrap { width: auto; float: none; }
-        
+
         #intro { min-height: 350px; }
+        #cowbird-grid, #credits {
+            .span12 { padding-top: 33px; padding-bottom: 33px; }
+        }
+        #notebook {
+            .span12 { padding-top: 33px; }
+            .span8 { padding-bottom: 33px; }
+        }
     }
 	footer {
 		.primary { float: none; }
@@ -502,9 +508,6 @@ footer {
     #slides {
         .slide .row {
             min-height: auto;
-        }
-        #notebook, #credits {
-            .row { padding-top: 44px; }
         }
     }
 	footer { 
