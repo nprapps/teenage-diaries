@@ -10,7 +10,7 @@
 <header>
     <div class="header-wrap" data-spy="affix">
         <div class="main-hed">
-            <h1>{{ PROJECT_NAME }}</h1>
+            <div class="headline"><h1>{{ PROJECT_NAME }}</h1></div>
             <div class="partners">
                 <ul>
                     <li class="txt">In partnership:</li>
@@ -67,6 +67,14 @@
     {% for person in COPY.people %}
     <div class="slide person" id="{{ person.name|lower }}">
         <div class="container">
+            <div class="mobile-photos">
+                {% if person.photo_then %}
+                <div class="photo-then" style="background-image: url('img/profiles/{{ person.photo_then }}');"></div>
+                {% endif %}
+                {% if person.photo_now %}
+                <div class="photo-now" style="background-image: url('img/profiles/{{ person.photo_now }}');"></div>
+                {% endif %}
+            </div>
             <div class="row"{% if person.photo_now %} style="background-image: url('img/profiles/{{ person.photo_now }}');"{% endif %}>
                 <div class="span4">
                     <div class="person-info">

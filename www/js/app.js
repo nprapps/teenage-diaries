@@ -46,7 +46,7 @@ $(document).ready(function() {
         }
 
         // Kill affix plugin for small displays
-        if (window_width < 768){
+        if (window_width < 979){
             $header_container.removeAttr('data-spy');
         } else {
             // set subnav affix top position to the top position of the subnav
