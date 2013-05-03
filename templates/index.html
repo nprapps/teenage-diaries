@@ -10,7 +10,7 @@
 <header>
     <div class="header-wrap" data-spy="affix">
         <div class="main-hed">
-            <h1>{{ PROJECT_NAME }}</h1>
+            <div class="headline"><h1>{{ PROJECT_NAME }}</h1></div>
             <div class="partners">
                 <ul>
                     <li class="txt">In partnership:</li>
@@ -21,21 +21,30 @@
         </div>
 
         <nav class="topnav">
-            <ul class="nav">
-                <li class="active"><a href="#intro">Introduction</a></li>
-                {% for person in COPY.people %}
-                <li><a href="#{{ person.name|lower }}">{{ person.name }}</a></li>
-                {% endfor %}
-                {% if COPY.content.cowbird_hed %}
-                <li><a href="#cowbird-grid">{{ COPY.content.cowbird_hed }}</a></li>
-                {% endif %}
-                {% if COPY.content.notebook_hed %}
-                <li><a href="#notebook">{{ COPY.content.notebook_hed }}</a></li>
-                {% endif %}
-                {% if COPY.content.project_credits %}
-                <li><a href="#credits">Credits</a></li>
-                {% endif %}
-            </ul>
+            <div class="navbar navbar-inverse">
+                <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#intro">Introduction</a></li>
+                    {% for person in COPY.people %}
+                    <li><a href="#{{ person.name|lower }}">{{ person.name }}</a></li>
+                    {% endfor %}
+                    {% if COPY.content.cowbird_hed %}
+                    <li><a href="#cowbird-grid">{{ COPY.content.cowbird_hed }}</a></li>
+                    {% endif %}
+                    {% if COPY.content.notebook_hed %}
+                    <li><a href="#notebook">{{ COPY.content.notebook_hed }}</a></li>
+                    {% endif %}
+                    {% if COPY.content.project_credits %}
+                    <li><a href="#credits">Credits</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </nav>
     </div>
 </header>
@@ -44,18 +53,28 @@
 
 {% block wide_content %}
 <div id="slides">
-    <div class="container">
-        <div class="slide" id="intro">
+    <div class="slide" id="intro">
+        <div class="container">
             <div class="row">
-                <div class="span12">
+                <div class="span8 offset2">
                     {% if COPY.content.intro_text %}
                     <p>{{ COPY.content.intro_text }}</p>
                     {% endif %}
                 </div>
             </div>
         </div>
-        {% for person in COPY.people %}
-        <div class="slide person" id="{{ person.name|lower }}">
+    </div>
+    {% for person in COPY.people %}
+    <div class="slide person" id="{{ person.name|lower }}">
+        <div class="container">
+            <div class="mobile-photos">
+                {% if person.photo_then %}
+                <div class="photo-then" style="background-image: url('img/profiles/{{ person.photo_then }}');"></div>
+                {% endif %}
+                {% if person.photo_now %}
+                <div class="photo-now" style="background-image: url('img/profiles/{{ person.photo_now }}');"></div>
+                {% endif %}
+            </div>
             <div class="row"{% if person.photo_now %} data-image="img/profiles/{{ person.photo_now }}"{% endif %}>
                 <div class="span4">
                     <div class="person-info">
@@ -143,10 +162,8 @@
                         </div>
                         {% endif %}
 
-                        {% if person.audio_now_description %}
                         <p class="description primary"><strong>NOW:</strong> {{ person.audio_now_description }}</p>
-                        {% endif %}
-                        {% if person.audio_now_headline %}
+                        {% if person.audio_now_mp3 %}
                         <div class="audio primary">
                             <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer" data-url="{{ person.audio_now_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_primary"></div>
                             <div id="jp_container_{{ person.name|lower }}_primary" class="jp-audio">
@@ -182,6 +199,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% elif person.audio_now_coming %}
+                        <p class="coming-soon">{{ person.audio_now_coming }}</p>
                         {% endif %}
                     </div> <!-- end .person-info -->
                 </div> <!-- end span -->
@@ -190,18 +209,19 @@
                     {% if person.photo_then %}
                     <img class="photo-then" src="img/profiles/{{ person.photo_then }}" alt="{{ person.photo_then_credit }}" />
                     {% endif %}
-                    {% if person.photo_now_credit %}
+                    {% if person.photo_then_caption %}
                     <p class="photo-credit">
-                        Photos: 
-                        {{ person.photo_then_credit }}{% if person.photo_then_credit %}; {{ person.photo_now_credit }}{% endif %}
+                        {{ person.photo_then_caption }}
                     </p>
                     {% endif %}
                 </div>
             </div>
         </div>
-        {% endfor %}
-        {% if COPY.content.cowbird_hed %}
-        <div class="slide" id="cowbird-grid">
+    </div> <!-- end container -->
+    {% endfor %}
+    {% if COPY.content.cowbird_hed %}
+    <div class="slide" id="cowbird-grid">
+        <div class="container">
             <div class="row">
                 <div class="span12">
                     <h2>{{ COPY.content.cowbird_hed }}</h2>
@@ -210,29 +230,52 @@
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% if COPY.content.notebook_hed %}
-        <div class="slide" id="notebook">
+    </div>
+    {% endif %}
+    {% if COPY.content.notebook_hed %}
+    <div class="slide" id="notebook">
+        <div class="container">
             <div class="row">
                 <div class="span12">
                     <h2>{{ COPY.content.notebook_hed }}</h2>
-                    <p>{{ COPY.content.notebook_description }}</p>
+                    <h3>{{ COPY.content.notebook_longer_hed }}</h3>
+                    <p class="introduction">{{ COPY.content.notebook_intro }}</h2>
+                </div>
+                <div class="span4 notebook-photo-wrap">
+                    {% if COPY.content.notebook_photo %}
+                    <img class="notebook-photo" src="img/profiles/{{ COPY.content.notebook_photo }}" alt="{{ COPY.content.notebook_photo_credit }}" />
+                    {% endif %}
+                    {% if COPY.content.notebook_credit %}
+                    <p class="footnote">
+                        {{ COPY.content.notebook_credit }}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="span8">
+                    <div class="notebook-text">
+                        {{ COPY.content.notebook_text }}
+                    </div>
                 </div>
             </div>
         </div>
-        {% endif %}
-        {% if COPY.content.project_credits %}
-        <div class="slide" id="credits">
+    </div>
+    {% endif %}
+    {% if COPY.content.project_credits %}
+    <div class="slide" id="credits">
+        <div class="container">
             <div class="row">
                 <div class="span12">
                     <h2>{{ COPY.content.project_credits_hed }}</h2>
                     <p>{{ COPY.content.project_credits }}</p>
-                    <p class="repo-link">{{ COPY.content.repo_info }}</p>
+                    
+                    {% if COPY.content.comment_link %}
+                    <p class="comment-link"><a class="btn btn-blue" href="{{ COPY.content.comment_link }}" target="_blank">{{ COPY.content.comment_link_text }}</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 {% endblock %}
 

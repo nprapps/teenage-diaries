@@ -34,7 +34,7 @@ $(document).ready(function() {
      * When the screen resizes (and on init)
      */
     function resize_slideshow() {
-        // Resize slide based on screen and header dimensions
+        // Resize slide based on screen and header dimensions -- but only for larger screens
         window_height = window.innerHeight;
         window_width = window.innerWidth;
         header_height = $header_container.height();
@@ -44,16 +44,18 @@ $(document).ready(function() {
         if (slide_height > max_height) {
             slide_height = max_height;
         }
-        $slide_row.css('minHeight', slide_height - header_height);
-        $slide.css('paddingTop', header_height);
-        $slide.css('marginBottom', -header_height);
 
         // Kill affix plugin for small displays
-        if (window_width < 768){
+        if (window_width < 979){
             $header_container.removeAttr('data-spy');
         } else {
-        // set subnav affix top position to the top position of the subnav
+            // set subnav affix top position to the top position of the subnav
             $header_container.attr('data-offset-top', 0);
+            
+            // set min height of each slide
+            $slide_row.css('minHeight', slide_height - header_height);
+            $slide.css('paddingTop', header_height);
+            $slide.css('marginBottom', -header_height);
         }
     }
 
@@ -66,7 +68,6 @@ $(document).ready(function() {
             scrollTop: target_pos
         }, 1000, function() {
             window.location.hash = target;
-            
         });
         current_anchor = find_anchor_position(target);
     }
@@ -104,13 +105,13 @@ $(document).ready(function() {
      * j/k key navigation
      */
     $(document).keydown(function(ev) {
-        if (ev.which == 74) {
+        if (ev.which == 75) {
             // go to previous slide
             if (current_anchor >= 1) {
                 scroll_to_position('#' + anchors[current_anchor - 1]);
             }
             return false;
-        } else if (ev.which == 75) {
+        } else if (ev.which == 74) {
             // go to next slide
             if (current_anchor < (total_anchors - 1)) {
                 scroll_to_position('#' + anchors[current_anchor + 1]);
