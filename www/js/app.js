@@ -2,12 +2,13 @@ $(document).ready(function() {
     var $header = $('header');
     var $header_container = $header.find('.header-wrap');
     var $nav = $('nav');
+    var $persons = $('.person');
+    var $players = $('.jp-jplayer');
+    var $player_progress = $('.jp-progress-container');
     var $section_links = $nav.find('a');
     var $slide = $('#slides').find('.slide');
     var $slide_row = $slide.find('.row');
     var $w = $(window);
-    var $players = $('.jp-jplayer');
-    var $persons = $('.person');
     
     var anchors = [];
     var current_anchor = 0;
@@ -15,7 +16,6 @@ $(document).ready(function() {
 
     var header_height = $header_container.height();
     var window_height = window.innerHeight;
-//    var window_width = window.innerWidth;
     var window_width = $('#slides').width();
     var mobile_width = 979;
     
@@ -84,6 +84,11 @@ $(document).ready(function() {
             $slide.css('paddingTop', 0);
             $slide.css('marginBottom', 0);
         }
+        
+        // resize the height of the play bars if needed
+        $player_progress.each(function() {
+            $(this).find('.jp-play-bar').height($(this).height());
+        });
     }
 
     /* 

@@ -151,7 +151,7 @@ header {
     }
     p {
         font-size: 13px;
-        line-height: 1.4;
+        line-height: 1.5;
         
         &.coming-soon {
             font-style: italic;
@@ -180,66 +180,48 @@ header {
         }
     }
     .audio {
-        &.primary {
-            .jp-controls { width: @large-audio; }
-            .jp-meta {
-                position: relative;
-            
-                h3 {
-                    font-size: 15px;
-                    margin: 5px 0 5px 0;
-                }
-                p {
-                    font-size: 11px;
-                    color: #999;
-                    font-weight: bold;
-                }
-                .show { float: left; }
-                .duration { float: right; }
-            }
-            .jp-play, .jp-pause {
-                width: @large-audio;
-                height: @large-audio;
-            }
-            .jp-play  { background: url('../img/btn-playpause-66.gif') no-repeat 0 0; }
-            .jp-pause { background: url('../img/btn-playpause-66.gif') no-repeat 0 -@large-audio; }
-            .jp-progress, .jp-play-bar { height: 66px; }
-            .audio-info { margin-top: -@large-audio; }
-        }
-        &.secondary {
-            margin-bottom: 11px;
-        
-            .jp-controls { width: @small-audio; }
-            .jp-meta {
-                position: relative;
-
-                h3 { 
-                    font-size: 13px;
-                    margin: 0;
-                    line-height: @small-audio;
-                }
-            }
-            .jp-play, .jp-pause {
-                width: @small-audio;
-                height: @small-audio;
-            }
-            .jp-play  { background: url('../img/btn-playpause-33.gif') no-repeat 0 0; }
-            .jp-pause { background: url('../img/btn-playpause-33.gif') no-repeat 0 -@small-audio; }
-            .jp-progress, .jp-play-bar { height: 33px; }
-            .audio-info { margin-top: -@small-audio; }
-        }
         .jp-interface {
-            display: table;
             width: 100%;
+            
+            &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
         }
-        .jp-controls { display: table-cell; }
-        .jp-meta {
-            display: table-cell;
-            vertical-align: top;
+        .jp-controls { float: left; }
+        .jp-progress-container {
+            vertical-align: middle;
+            position: relative;
         
             h3 {
                 font-weight: bold;
                 color: #7a96cc;
+                margin: 0;
+                line-height: 1.2;
+            }
+            .audio-info {
+                padding: 0 11px;
+                z-index: 201;
+                position: relative;
+                -webkit-font-smoothing: antialiased;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: default;
+
+                &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+            }
+            .jp-play-bar,
+            .jp-progress { 
+                height: 100%;
+            }
+            .jp-play-bar { background-color: #444; }
+            .jp-progress { 
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 200;
+                background: #333;
+                background: rgba(51,51,51,.65);
             }
         }
         .jp-play, .jp-pause {
@@ -248,17 +230,54 @@ header {
             
             &:hover { opacity: .7; }
         }
-        .jp-play-bar { background-color: #444; }
-        .jp-progress { 
-            background: #333;
-            background: rgba(51,51,51,.65);
-        }
-        .audio-info {
-            padding: 0 11px;
-            -webkit-font-smoothing: antialiased;
-            &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-        }
+        &.primary {
+            .jp-controls { width: @large-audio; }
+            .jp-progress-container {
+                margin-left: @large-audio;
+                min-height: @large-audio;
 
+                h3 { 
+                    font-size: 15px; 
+                    margin-bottom: 5px;
+                    padding-top: 8px;
+                }
+                p {
+                    font-size: 11px;
+                    color: #999;
+                    font-weight: bold;
+                    margin: 0;
+                }
+                .duration { padding-bottom: 8px; }
+                .jp-progress, .jp-play-bar { min-height: @large-audio; }
+            }
+            .jp-play, .jp-pause {
+                width: @large-audio;
+                height: @large-audio;
+            }
+            .jp-play  { background: url('../img/btn-playpause-66.gif') no-repeat 0 0; }
+            .jp-pause { background: url('../img/btn-playpause-66.gif') no-repeat 0 -@large-audio; }
+        }
+        &.secondary {
+            margin-bottom: 11px;
+        
+            .jp-controls { width: @small-audio; }
+            .jp-progress-container {
+                margin-left: @small-audio;
+                min-height: @small-audio;
+            
+                h3 { 
+                    font-size: 13px;
+                    padding: 8px 0;
+                }
+                .jp-progress, .jp-play-bar { min-height: @small-audio; }
+            }
+            .jp-play, .jp-pause {
+                width: @small-audio;
+                height: @small-audio;
+            }
+            .jp-play  { background: url('../img/btn-playpause-33.gif') no-repeat 0 0; }
+            .jp-pause { background: url('../img/btn-playpause-33.gif') no-repeat 0 -@small-audio; }
+        }
         &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
     }
     .mobile-photos { display: none; }
@@ -459,6 +478,10 @@ footer {
         .main-hed, nav ul.nav { width: 1170px; }
         nav ul.nav li { padding-left: 22px; margin-left: 22px; }
     }
+    #slides .audio.primary .jp-progress-container {
+        .show { float: left; }
+        .duration { float: right; }
+    }
 }
 @media (max-width: 979px) {
     header {
@@ -517,6 +540,10 @@ footer {
         }
     }
     #slides {
+        .audio.primary .jp-progress-container {
+            .show { float: left; }
+            .duration { float: right; }
+        }
         .mobile-photos {
             display: block;
             
@@ -544,7 +571,6 @@ footer {
             background: none;
         }
         .person-info-wrap { width: auto; float: none; }
-
         #intro { 
             background-color: #222;
 
