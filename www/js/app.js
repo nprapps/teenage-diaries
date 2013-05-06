@@ -48,21 +48,12 @@ $(document).ready(function() {
         }
 
         if (window_width <= mobile_width){
-            // Kill affix plugin for small displays
-            $header_container.removeAttr('data-spy');
-            $slide_row.css('minHeight', 0);
-            $slide.css('paddingTop', 0);
-            $slide.css('marginBottom', 0);
-
             // disable background images on profiles
             $persons.each(function() {
                 var $row = $(this).find('.row');
                 $row.css('background-image', 'none');
             });
         } else {
-            // set subnav affix top position to the top position of the subnav
-            $header_container.attr('data-offset-top', 0);
-            
             // set min height of each slide
             $slide_row.css('minHeight', slide_height - header_height);
             $slide.css('paddingTop', header_height);
@@ -81,6 +72,17 @@ $(document).ready(function() {
                 img_url = img_url.replace('480', '980');
                 $row.css('background-image', 'url(' + img_url + ')');
             });
+        }
+        
+        // affix the header only if it's a desktop non-touch display
+        if ((Modernizr.touch == false) && (window_width > mobile_width)) {
+            $header_container.attr('data-offset-top', 0);
+        } else {
+            // Kill affix plugin for small displays
+            $header_container.removeAttr('data-spy');
+            $slide_row.css('minHeight', 0);
+            $slide.css('paddingTop', 0);
+            $slide.css('marginBottom', 0);
         }
     }
 
