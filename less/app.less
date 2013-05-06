@@ -306,6 +306,7 @@ header {
 //            font: 20px/1.6 Georgia, serif;
         }
         .partners { display: none; }
+        .row { padding-top: 2px; }
     }
     #amanda {
         h2 { background-image: url('../img/title-amanda.png'); }
@@ -316,8 +317,7 @@ header {
     }
     #josh {
         h2 { background-image: url('../img/title-josh.png'); }
-        .photo-then-wrap { padding-top: 200px; }
-        .photo-then-wrap .photo-credit { color: #454545; }
+        .photo-then-wrap { padding-top: 50px; }
     }
     #juan {
         h2 { background-image: url('../img/title-juan.png'); }
@@ -492,7 +492,7 @@ footer {
             .photo-then, .photo-now {
                 width: 50%; 
                 height: 300px;
-                background-position: 50% 50%;
+                background-position: 50% 0%;
                 background-repeat: no-repeat;
                 background-size: cover;
                 float: left;
@@ -519,6 +519,8 @@ footer {
             .span8 { padding-bottom: 22px; width: auto; margin-left: 20px; }
         }
         #amanda { margin-top: 66px; }
+        #josh .mobile-photos .photo-then { background-position: 75% 0%; }
+        #juan .mobile-photos .photo-then { background-position: 50% 100%; }
         #cowbird-grid, #credits {
             .span12 { padding-top: 33px; padding-bottom: 33px; }
         }
@@ -581,5 +583,6 @@ footer {
         #notebook {
             p.introduction { font-size: 14px; }
         }
+        #intro p { font-size: 14px; }
     }
 }
