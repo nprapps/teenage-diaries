@@ -55,7 +55,13 @@
 <div id="slides">
     <div class="slide" id="intro">
         <div class="container">
+            <div class="mobile-photos first">
+                <img class="photo-intro" src="img/profiles/intro_grid_480-1.jpg" alt="Featured Teenage Diaries profiles" />
+            </div>
             <div class="row">
+                <div class="span12 desktop-photos">
+                    <img class="photo-intro first" src="img/profiles/intro_grid_980-1.jpg" alt="Featured Teenage Diaries profiles" />
+                </div>
                 <div class="span8 offset2">
                     {% if COPY.content.intro_text %}
                     <p>{{ COPY.content.intro_text }}</p>
@@ -69,6 +75,12 @@
                         </ul>
                     </div>
                 </div>
+                <div class="span12 desktop-photos">
+                    <img class="photo-intro" src="img/profiles/intro_grid_980-2.jpg" alt="Featured Teenage Diaries profiles" />
+                </div>
+            </div>
+            <div class="mobile-photos">
+                <img class="photo-intro" src="img/profiles/intro_grid_480-2.jpg" alt="Featured Teenage Diaries profiles" />
             </div>
         </div>
     </div>

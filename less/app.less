@@ -290,6 +290,23 @@ header {
         background: rgba(48,48,48,.7);
         padding: 22px;
     }
+    #intro {
+        .photo-intro {
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            height: auto;
+            
+            &.first { margin-bottom: 33px; }
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 33px;
+//            font: 20px/1.6 Georgia, serif;
+        }
+        .partners { display: none; }
+    }
     #amanda {
         h2 { background-image: url('../img/title-amanda.png'); }
     }
@@ -410,7 +427,7 @@ footer {
 }
 @media (max-width: 979px) {
     header {
-        margin-bottom: 33px;
+        margin-bottom: 2px;
 
         .header-wrap {
             background: none;
@@ -426,7 +443,7 @@ footer {
             }
             .headline {
                 padding: 0 20px;
-                background-color: #222;
+                background-color: #303030;
             }
             .partners { display: none; }
         }
@@ -467,7 +484,11 @@ footer {
     #slides {
         .mobile-photos {
             display: block;
-
+            
+            .photo-intro {
+                width: 100%;
+                height: auto;
+            }
             .photo-then, .photo-now {
                 width: 50%; 
                 height: 300px;
@@ -490,8 +511,14 @@ footer {
         .person-info-wrap { width: auto; float: none; }
 
         #intro { 
-            .span8 { padding-bottom: 33px; }
+            background-color: #222;
+
+            .first .photo-intro { margin-bottom: 22px; }
+            .desktop-photos { display: none; }
+            .partners { display: block; }
+            .span8 { padding-bottom: 22px; width: auto; margin-left: 20px; }
         }
+        #amanda { margin-top: 66px; }
         #cowbird-grid, #credits {
             .span12 { padding-top: 33px; padding-bottom: 33px; }
         }
@@ -505,15 +532,22 @@ footer {
 		.secondary ul, .secondary p { margin-left: 0; float: left; }
 	}
 }
+@media (max-width: 979px) and (min-width: 768px) {
+    #slides #intro {
+        p, .partners { padding-left: 20px; padding-right: 20px; }
+    }
+}
 @media (max-width: 767px) {
     body { padding-right: 0; padding-left: 0; }
-    #intro, #cowbird-grid, #notebook, #credits {
-        .container { padding-left: 20px; padding-right: 20px; }
-    }
     #slides {
-        .slide.person .row {
-            padding: 0 20px;
+        #intro, #cowbird-grid, #notebook, #credits {
+            .container { padding-left: 20px; padding-right: 20px; }
         }
+        #intro {
+            .mobile-photos { margin-left: -20px; margin-right: -20px; }
+            .span8 { margin-left: 0; }
+        }
+        .slide.person .row { padding: 0 20px; }
     }
 	footer { 
 		.primary { display: none; }
