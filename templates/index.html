@@ -288,9 +288,13 @@
                     <h2>{{ COPY.content.project_credits_hed }}</h2>
                     <p>{{ COPY.content.project_credits }}</p>
                     
-                    {% if COPY.content.comment_link %}
-                    <p class="comment-link"><a class="btn btn-blue" href="{{ COPY.content.comment_link }}" target="_blank">{{ COPY.content.comment_link_text }}</a></p>
-                    {% endif %}
+                    <ul id="share-buttons">
+                        {% if COPY.content.comment_link %}
+                        <li class="comment-link"><a class="btn btn-blue" href="{{ COPY.content.comment_link }}" target="_blank">{{ COPY.content.comment_link_text }}</a></li>
+                        {% endif %}
+                        <li class="social twitter"><a rel="external" href="http://twitter.com/share?text={{ TWITTER.TEXT|urlencode }}&amp;url={{ TWITTER.URL|urlencode }}" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Twitter In Credits', '{{ PROJECT_NAME }}']);">Share This On Twitter</a></li>
+                        <li class="social facebook"><a rel="external" href="https://www.facebook.com/dialog/feed?app_id={{ FACEBOOK.APP_ID }}&amp;link={{ FACEBOOK.URL|urlencode }}&amp;name={{ FACEBOOK.TITLE|urlencode }}&amp;picture={{ FACEBOOK.IMAGE_URL|urlencode }}&amp;redirect_uri={{ FACEBOOK.URL|urlencode }}" alt="Share on Facebook" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Facebook In Credits', '{{ PROJECT_NAME }}']);">Like This On Facebook</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@
 @small-audio: 33px;
 @large-audio: 66px;
 
+
 // General styles
 body { 
     background-color: #121212;
@@ -161,7 +162,6 @@ header {
             margin: 0;
         }
         &.description.primary { margin-top: 33px; }
-        &.comment-link { margin-top: 33px; }
     }
     .slide {
         &.person {
@@ -383,6 +383,42 @@ header {
         .span12 { padding-bottom: 112px; }
     }
 }
+#share-buttons {
+    list-style: none; 
+    margin: 44px 0 0 0; 
+    padding: 0;
+
+    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+    li {
+        margin-bottom: 2px;
+        width: 33%;
+        float: left;
+
+        &.comment-link {
+            margin-bottom: 33px;
+
+            a { 
+                width: 85%; 
+                padding-left: 0; 
+                padding-right: 0;
+            }
+        }
+        &.social a {
+            display: block;
+            height: 44px;
+            line-height: 44px;
+            padding-left: 55px;
+            padding-right: 11px;
+            background: #ebebeb url(@icon-sprite) no-repeat;
+            font-size: 12px;
+            font-weight: bold;
+
+            &:hover { opacity: .7; }
+        }
+        &.facebook a { background-position: 0px -144px; }
+        &.twitter a { background-position: 0px -96px; }
+    }
+}
 
 
 // Footer
@@ -532,6 +568,13 @@ footer {
 		.primary { float: none; }
 		.secondary ul, .secondary p { margin-left: 0; float: left; }
 	}
+    #share-buttons li {
+        max-width: none;
+        float: none;
+        width: 228px;
+        
+        &.comment-link a { width: 100%; }
+    }
 }
 @media (max-width: 979px) and (min-width: 768px) {
     #slides #intro {
@@ -585,5 +628,9 @@ footer {
             p.introduction { font-size: 14px; }
         }
         #intro p { font-size: 14px; }
+    }
+    #share-buttons li {
+        max-width: none;
+        width: auto;
     }
 }
