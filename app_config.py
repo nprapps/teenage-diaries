@@ -37,7 +37,7 @@ FACEBOOK = {
     'TITLE': PROJECT_NAME,
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
-    'IMAGE_URL': 'http://apps.npr.org/teenage-diaries/img/frankie_facebook.jpg',
+    'IMAGE_URL': 'http://apps.npr.org/teenage-diaries/img/josh_facebook.jpg',
     'APP_ID': '138837436154588'
 }
 
