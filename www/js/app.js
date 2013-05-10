@@ -167,38 +167,60 @@ $(document).ready(function() {
     /*
      * Audio
      */
-    function init_audio() {
-        $current_player.jPlayer({
-            ready: function() {
-                $current_player.jPlayer('setMedia', {
-                    mp3: $(this).data('url')
-                }).jPlayer('play');
-            },
-            preload: 'none',
-            swfPath: 'js',
-            solution: 'flash, html',
-            supplied: 'mp3',
-            cssSelectorAncestor: $current_player.data('selector')
+    // On mobile browers we load everything first, because otherwise we require two clicks to play
+    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        $players.each(function() {
+            $(this).jPlayer({
+                ready: function() {
+                    $(this).jPlayer('setMedia', {
+                        mp3: $(this).data('url')
+                    }).jPlayer('pause');
+                },
+                play: function() {
+                    $(this).jPlayer('pauseOthers');
+                },
+                preload: "none",
+                swfPath: 'js',
+                solution: 'flash, html',
+                supplied: 'mp3',
+                cssSelectorAncestor: $(this).data('selector')
+            });
+        });
+    // On other browsers we load incrementally, because FF and Safari won't allow 7+ jplayers on a page
+    } else {
+        function init_audio() {
+            $current_player.jPlayer({
+                ready: function() {
+                    $current_player.jPlayer('setMedia', {
+                        mp3: $(this).data('url')
+                    }).jPlayer('play');
+                },
+                preload: 'none',
+                swfPath: 'js',
+                solution: 'flash, html',
+                supplied: 'mp3',
+                cssSelectorAncestor: $current_player.data('selector')
+            });
+        }
+
+        $play_buttons.click(function() {
+            var $parent_player = $(this).parents('.jp-audio').prev('.jp-jplayer');
+
+            if ($current_player && $parent_player.attr('id') == $current_player.attr('id')) {
+                return true;
+            }
+
+            if ($current_player) {
+                $current_player.jPlayer('destroy');
+            }
+
+            $current_player = $parent_player;
+
+            init_audio();
+
+            return true;
         });
     }
-
-    $play_buttons.click(function() {
-        var $parent_player = $(this).parents('.jp-audio').prev('.jp-jplayer');
-
-        if ($current_player && $parent_player.attr('id') == $current_player.attr('id')) {
-            return true;
-        }
-
-        if ($current_player) {
-            $current_player.jPlayer('destroy');
-        }
-
-        $current_player = $parent_player;
-
-        init_audio();
-
-        return true;
-    });
 
 	/*
 	 * Init functions
@@ -207,5 +229,4 @@ $(document).ready(function() {
 	resize_slideshow();
 	$w.resize(resize_slideshow);
 	check_initial_hash();
-    //init_audio();
 });
