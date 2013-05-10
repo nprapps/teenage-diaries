@@ -4,6 +4,8 @@ $(document).ready(function() {
     var $nav = $('nav');
     var $persons = $('.person');
     var $players = $('.jp-jplayer');
+    var $current_player = null;
+    var $play_buttons = $('.jp-play');
     var $player_progress = $('.jp-progress-container');
     var $section_links = $nav.find('a');
     var $slide = $('#slides').find('.slide');
@@ -166,25 +168,37 @@ $(document).ready(function() {
      * Audio
      */
     function init_audio() {
-        $players.each(function() {
-            $(this).jPlayer({
-                ready: function() {
-                    $(this).jPlayer('setMedia', {
-                        mp3: $(this).data('url')
-                    }).jPlayer('pause');
-                },
-                play: function() {
-                    $(this).jPlayer('pauseOthers');
-                },
-                preload: "none",
-                swfPath: 'js',
-                solution: 'flash, html',
-                supplied: 'mp3',
-                cssSelectorAncestor: $(this).data('selector')
-            });
+        $current_player.jPlayer({
+            ready: function() {
+                $current_player.jPlayer('setMedia', {
+                    mp3: $(this).data('url')
+                }).jPlayer('play');
+            },
+            preload: 'none',
+            swfPath: 'js',
+            solution: 'flash, html',
+            supplied: 'mp3',
+            cssSelectorAncestor: $current_player.data('selector')
         });
     }
 
+    $play_buttons.click(function() {
+        var $parent_player = $(this).parents('.jp-audio').prev('.jp-jplayer');
+
+        if ($current_player && $parent_player.attr('id') == $current_player.attr('id')) {
+            return true;
+        }
+
+        if ($current_player) {
+            $current_player.jPlayer('destroy');
+        }
+
+        $current_player = $parent_player;
+
+        init_audio();
+
+        return true;
+    });
 
 	/*
 	 * Init functions
@@ -193,5 +207,5 @@ $(document).ready(function() {
 	resize_slideshow();
 	$w.resize(resize_slideshow);
 	check_initial_hash();
-    init_audio();
+    //init_audio();
 });
