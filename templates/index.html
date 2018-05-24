@@ -123,13 +123,13 @@
                             <div id="audio-{{ person.name|lower }}-secondary" class="jp-jplayer" data-url="{{ person.audio_then_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary"></div>
                             <div id="jp_container_{{ person.name|lower }}_secondary" class="jp-audio">
                                 <div class="jp-type-single">
-    
+
                                     <div class="jp-gui jp-interface">
                                         <div class="jp-controls">
                                             <a href="javascript:;" class="jp-play" tabindex="1">play</a>
                                             <a href="javascript:;" class="jp-pause" tabindex="1" style="display: none;">pause</a>
                                         </div>
-            
+
                                         <div class="jp-progress-container">
                                             <div class="jp-progress">
                                                 <div class="jp-seek-bar">
@@ -152,13 +152,13 @@
                             <div id="audio-{{ person.name|lower }}-secondary2" class="jp-jplayer" data-url="{{ person.audio_then2_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_secondary2"></div>
                             <div id="jp_container_{{ person.name|lower }}_secondary2" class="jp-audio">
                                 <div class="jp-type-single">
-    
+
                                     <div class="jp-gui jp-interface">
                                         <div class="jp-controls">
                                             <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i>play</i></a>
                                             <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i>pause</i></a>
                                         </div>
-            
+
                                         <div class="jp-progress-container">
                                             <div class="jp-progress">
                                                 <div class="jp-seek-bar">
@@ -182,13 +182,13 @@
                             <div id="audio-{{ person.name|lower }}-primary" class="jp-jplayer" data-url="{{ person.audio_now_mp3 }}" data-selector="#jp_container_{{ person.name|lower }}_primary"></div>
                             <div id="jp_container_{{ person.name|lower }}_primary" class="jp-audio">
                                 <div class="jp-type-single">
-    
+
                                     <div class="jp-gui jp-interface">
                                         <div class="jp-controls">
                                             <a href="javascript:;" class="jp-play nav-btn" tabindex="1"><i>play</i></a>
                                             <a href="javascript:;" class="jp-pause nav-btn" tabindex="1" style="display: none;"><i>pause</i></a>
                                         </div>
-            
+
                                         <div class="jp-progress-container">
                                             <div class="jp-progress-wrap">
                                                 <div class="jp-progress">
@@ -280,7 +280,7 @@
                 <div class="span12">
                     <h2>{{ COPY.content.project_credits_hed }}</h2>
                     <p>{{ COPY.content.project_credits }}</p>
-                    
+
                     <ul id="share-buttons">
                         {% if COPY.content.comment_link %}
                         <li class="comment-link"><a class="btn btn-blue" href="{{ COPY.content.comment_link }}" target="_blank">{{ COPY.content.comment_link_text }}</a></li>
@@ -288,6 +288,9 @@
                         <li class="social twitter"><a rel="external" href="http://twitter.com/share?text={{ TWITTER.TEXT|urlencode }}&amp;url={{ TWITTER.URL|urlencode }}" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Twitter In Credits', '{{ PROJECT_NAME }}']);">Share This On Twitter</a></li>
                         <li class="social facebook"><a rel="external" href="https://www.facebook.com/dialog/feed?app_id={{ FACEBOOK.APP_ID }}&amp;link={{ FACEBOOK.URL|urlencode }}&amp;name={{ FACEBOOK.TITLE|urlencode }}&amp;picture={{ FACEBOOK.IMAGE_URL|urlencode }}&amp;redirect_uri={{ FACEBOOK.URL|urlencode }}" alt="Share on Facebook" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Facebook In Credits', '{{ PROJECT_NAME }}']);">Like This On Facebook</a></li>
                     </ul>
+
+                    <p class="disclaimer">Use of this site is governed by NPR's <a target="_blank" href="http://www.npr.org/about-npr/179876898/terms-of-use">terms of use</a> and <a target="_blank" href="http://www.npr.org/about-npr/179878450/privacy-policy">privacy policy</a>.</p>
+
                 </div>
             </div>
         </div>
