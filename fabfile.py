@@ -99,8 +99,10 @@ def download_copy():
 def update_copy():
     """
     Fetches the latest Google Doc and updates local JSON.
+    5/23/18 - DISABLED GDOCS CONNECTION
     """
-    download_copy()
+    print 'The Google Spreadsheets connection has been disabled. See project README.'
+    # download_copy()
 
 def app_config_js():
     """
@@ -451,4 +453,3 @@ def super_merge():
     local('git checkout master')
 
     local('git push --all')
-

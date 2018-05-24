@@ -1,0 +1,8 @@
+{
+  "name": "teenage-diaries",
+  "version": "1.0.0",
+  "dependencies": {
+    "less": "^3.0.4",
+    "universal-jst": "nprapps/universal-jst#1.0.6"
+  }
+}
