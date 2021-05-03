@@ -220,7 +220,7 @@
 
                 <div class="span2 offset5 photo-then-wrap">
                     {% if person.photo_then %}
-                    <img class="photo-then" src="img/profiles/{{ person.photo_then }}" alt="{{ person.photo_then_credit }}" />
+                    <img class="photo-then" src="img/profiles/{{ person.photo_then }}" alt="" />
                     {% endif %}
                     {% if person.photo_then_caption %}
                     <p class="photo-credit">
@@ -239,7 +239,6 @@
                 <div class="span12">
                     <h2>{{ COPY.content.cowbird_hed }}</h2>
                     <p>{{ COPY.content.cowbird_description }}</p>
-                    <div id='cowbird' data-key='5165bfa810ee6' data-constraints='collectionid=653' data-sort='custom' data-style='mosaic' data-summary='true' data-widget='stories'></div>
                 </div>
             </div>
         </div>
@@ -301,5 +300,4 @@
 
 
 {% block extra_foot_js %}
-    <script type='text/javascript' src='http://cdn1.cowbird.com/assets/js/embed/cb-embedded.js'></script>
 {% endblock %}
